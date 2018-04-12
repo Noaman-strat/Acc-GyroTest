@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>2</fileVersion>
+    <fileChecksum>2553017581</fileChecksum>
+    <configuration>
+        <name>Debug</name>
+        <outputs>
+            <file>$PROJ_DIR$\README.html</file>
+            <file>$PROJ_DIR$\$SIMPLELINK_CC2640R2_SDK_INSTALL_DIR$\source\ti\blestack\boards\CC2640R2_LAUNCHXL\Board.html</file>
+            <file>$PROJ_DIR$\README.md</file>
+            <file>$PROJ_DIR$\Board.h</file>
+            <file>$PROJ_DIR$\CC2640R2_LAUNCHXL.h</file>
+            <file>$PROJ_DIR$\CC2640R2_LAUNCHXL.c</file>
+            <file>$PROJ_DIR$\ccfg.c</file>
+            <file>$PROJ_DIR$\main_tirtos.c</file>
+            <file>$PROJ_DIR$\pwmled.c</file>
+            <file>$PROJ_DIR$\pwmled_CC2640R2_LAUNCHXL_TIRTOS.icf</file>
+            <file>$PROJ_DIR$\Debug\Obj\CC2640R2_LAUNCHXL.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\ccfg.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\main_tirtos.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\pwmled.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\CC2640R2_LAUNCHXL.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\ccfg.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\main_tirtos.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\pwmled.pbi</file>
+            <file>$PROJ_DIR$\Debug\Exe\pwmled.out</file>
+            <file>$PROJ_DIR$\Debug\Obj\pwmled.pbd</file>
+            <file>$PROJ_DIR$\Debug\Obj\main_tirtos.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\pwmled.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\ccfg.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\CC2640R2_LAUNCHXL.__cstat.et</file>
+        </outputs>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 18</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\CC2640R2_LAUNCHXL.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 14</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 23</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 10</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\ccfg.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 15</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 22</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 11</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\main_tirtos.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 16</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 20</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 12</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\pwmled.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 17</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 21</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 13</file>
+                </tool>
+            </outputs>
+        </file>
+    </configuration>
+    <configuration>
+        <name>Release</name>
+        <outputs>
+            <file>$PROJ_DIR$\pwmled.ipcf</file>
+            <file>$PROJ_DIR$\README.html</file>
+            <file>$PROJ_DIR$\$SIMPLELINK_CC2640R2_SDK_INSTALL_DIR$\source\ti\blestack\boards\CC2640R2_LAUNCHXL\Board.html</file>
+            <file>$PROJ_DIR$\README.md</file>
+            <file>$PROJ_DIR$\Board.h</file>
+            <file>$PROJ_DIR$\CC2640R2_LAUNCHXL.h</file>
+            <file>$PROJ_DIR$\CC2640R2_LAUNCHXL.c</file>
+            <file>$PROJ_DIR$\ccfg.c</file>
+            <file>$PROJ_DIR$\main_tirtos.c</file>
+            <file>$PROJ_DIR$\pwmled.c</file>
+            <file>$PROJ_DIR$\pwmled_CC2640R2_LAUNCHXL_TIRTOS.icf</file>
+        </outputs>
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>ILINK</tool>
+        </forcedrebuild>
+    </configuration>
+</project>

@@ -1,0 +1,1084 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>2</fileVersion>
+    <fileChecksum>3475369329</fileChecksum>
+    <configuration>
+        <name>FlashROM_StackLibrary</name>
+        <outputs>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\board_key.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\board_key.h</file>
+            <file>$PROJ_DIR$\..\..\..\src\app\Global.h</file>
+            <file>$PROJ_DIR$\..\..\..\src\app\LSM6DSM.c</file>
+            <file>$PROJ_DIR$\..\..\..\src\app\LSM6DSM.h</file>
+            <file>$PROJ_DIR$\..\..\..\src\app\mySPI.c</file>
+            <file>$PROJ_DIR$\..\..\..\src\app\mySPI.h</file>
+            <file>$PROJ_DIR$\..\..\..\src\app\myUART.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\knl\Clock.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\src\inc\icall_user_config.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\hal\src\target\_common\cc26xx\_hal_types.h</file>
+            <file>$PROJ_DIR$\..\config\configPkg\compiler.opt.defs</file>
+            <file>$PROJ_DIR$\..\stack\build_config.opt</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\knl\package\package.defs.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Assert.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Main.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\config\build_components.opt</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Assert__prologue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\hal\src\target\_common\hal_types.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\config\factory_config.opt</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Types__epilogue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\IInstance.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Types__prologue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\iar\targets\arm\M3.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\iar\targets\arm\std.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Types.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\xdc.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Memory.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\package\package.defs.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\IHeap.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Error__prologue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Error__epilogue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\IModule.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\package\Memory_HeapProxy.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\hal\src\target\_common\cc26xx\rf_hal.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\hal\src\inc\hal_assert.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Error.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\package\Main_Module_GateProxy.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\IGateProvider.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Diags.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Diags__prologue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Diags__epilogue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Assert__epilogue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Log.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\gates\package\package.defs.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\cfg\global.h</file>
+            <file>$PROJ_DIR$\..\config\configPkg\package\cfg\app_ble_prm3.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\heaps\HeapCallback.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\heaps\package\package.defs.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\src\inc\icall_cc26xx_defs.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\vims.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_vims.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\target\sablexr2_module\sablexr2_module_board.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\heapmgr\rtos_heaposal.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\heaps\HeapMem.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\heaps\package\HeapMem_Module_GateProxy.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\boards\SABLEXR2_DEV_BOARD\PlaneRemote.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\boards\SABLEXR2_DEV_BOARD\PlaneRemote.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_types.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_chip_def.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_memmap.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_ioc.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_ints.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\interrupt.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_nvic.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\debug.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\cpu.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_cpu_scs.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\rom.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\gpio.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_gpio.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\intrinsics.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\icall_user_config.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\simple_peripheral_menu.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\ECCROMCC26XX.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\icall_api_lite.o</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\utils\List.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\simple_peripheral.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\TRNGCC26XX.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\two_btn_menu.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\icall.o</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\dpl\SemaphoreP.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stddef.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\inc\ble_dispatch.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\rf_prop_cmd.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\DeviceFamily.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\crypto.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\dpl\ClockP.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\rf_common_cmd.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\board_key.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\icall_cc2650.o</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\posix\sys\types.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\posix\time.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\posix\pthread.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\posix\signal.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\time32.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\time.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\posix\unistd.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\posix\sched.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\UART.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\UART.o</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_ssi.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_prcm.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\pwmled.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\pwmled.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\SPI.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\SPI.pbi</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\event.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_gpt.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\timer.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\pwm\PWMTimerCC26XX.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_event.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\timer\GPTimerCC26XX.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_trng.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Log__prologue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Text.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\Log__epilogue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\interfaces\ITimer.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\interfaces\package\package.defs.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\knl\Queue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\knl\Swi.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\knl\package\Clock_TimerProxy.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\family\arm\m3\Hwi.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\family\arm\m3\Hwi__prologue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\family\arm\m3\package\package.defs.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\BIOS.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\BIOS__prologue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\package\package.defs.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\package\BIOS_RtsGateProxy.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\BIOS__epilogue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\interfaces\IHwi.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\family\arm\m3\Hwi__epilogue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\knl\Semaphore.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\knl\Task.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\knl\Task__prologue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\interfaces\ITaskSupport.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\knl\package\Task_SupportProxy.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\knl\Task__epilogue.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\math.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_float_setup.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\onboard.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\hal\src\inc\hal_sleep.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\systick.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\flash.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_flash.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\LSM6DSM.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\LSM6DSM.o</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_uart.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\dpl\SwiP.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_aon_ioc.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\udma.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_aux_wuc.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\adi.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\aux_wuc.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_adi_3_refsys.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_aon_rtc.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\sys_ctrl.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\ble_user_config.o</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\ISystemSupport.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\dpl\DebugP.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_fcfg1.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\aon_ioc.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_ddi.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\UARTCC26XX.pbi</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_adi.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_aon_wuc.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_udma.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_aux_smph.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\aon_wuc.h</file>
+            <file>$PROJ_DIR$\..\..\..\src\app\SPI.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\power\PowerCC26XX.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_rfc_pwr.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_adi_2_refsys.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\mySPI.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\mySPI.pbi</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\package\System_SupportProxy.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\pwr_ctrl.h</file>
+            <file>$PROJ_DIR$\..\..\..\src\app\SPI.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\display\Display.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\System.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\ADCBuf.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_sysctl.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_aon_sysctl.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\prcm.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\UARTCC26XX.o</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\boards\SABLEXR2_DEV_BOARD\Board.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\myUART.o</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\ADC.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\ddi.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\util.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\myUART.pbi</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\runtime\package\System_Module_GateProxy.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\PWM.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\target\sablexr2_module\sablexr2_module_board.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_ddi_0_osc.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\osc.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\Watchdog.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\display\DisplayUart.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\Power.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\ECCROMCC26XX.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\board.pbi</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\knl\Event.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\knl\Event__prologue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\knl\Event__epilogue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\pin\PINCC26XX.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\dpl\HwiP.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\PIN.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\ioc.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product_stdlib.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\startup_files\ccfg.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_ccfg.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_ccfg_simple_struct.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\hal\Hwi.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\hal\Hwi__prologue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\hal\package\package.defs.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\hal\package\Hwi_HwiProxy.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\hal\Hwi__epilogue.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\gates\GateHwi.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\osal\src\inc\osal.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\blelib\hci_tl\cc26xx_hci_tl_none.a</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\blelib\ctrl\cc2640_ll_pxxx.a</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\rom\map_direct.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\inc\icall_api_idx.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\trng.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\osal\src\inc\osal_timers.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\osal\src\inc\osal_memory.h</file>
+            <file>$PROJ_DIR$\..\config\lib_linker.cmd</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\sysbios\rom\cortexm\cc26xx\r2\golden\CC26xx\TIRTOS_ROM.icf</file>
+            <file>$PROJ_DIR$\..\config\configPkg\package\cfg\app_ble_prm3.orm3</file>
+            <file>$PROJ_DIR$\..\config\src\sysbios\rom_sysbios.arm3</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\hci_tl.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\controller\cc26xx_r2\inc\ll.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\osal\src\inc\osal_bufmgr.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\controller\cc26xx_r2\inc\ll_scheduler.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\iar\targets\arm\rts\lib\release\boot.arm3</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\blelib\ctrl\cc2640_hci_pxxx.a</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\l2cap.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\gattservapp.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\sm.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\rom\rom_jt.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\att.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\controller\cc26xx_r2\inc\ll_common.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\limits.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\linkdb.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\hci_event.h</file>
+            <file>$PROJ_DIR$\..\config\configPkg\linker.cmd</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\hci_data.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\ccfg_app_ble.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\util.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdarg.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\board.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\gattservapp_util.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\gatt_uuid.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\cc2640r2lp_app.pbd</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\icall_cc2650.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\icall.pbi</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\hal\src\inc\hal_defs.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\iccarm_builtin.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\hal\src\target\_common\hal_mcu.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\float.h</file>
+            <file>$PROJ_DIR$\..\..\..\src\app\myUART.h</file>
+            <file>$PROJ_DIR$\..\..\..\src\app\pwmled.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\rcosc\rcosc_calibration.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\rcosc\rcosc_calibration.h</file>
+            <file>$PROJ_DIR$\..\..\..\src\app\simple_peripheral.c</file>
+            <file>$PROJ_DIR$\..\..\..\src\app\simple_peripheral.h</file>
+            <file>$PROJ_DIR$\..\..\..\src\app\simple_peripheral_menu.c</file>
+            <file>$PROJ_DIR$\..\..\..\src\app\simple_peripheral_menu.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\menu\two_btn_menu.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\menu\two_btn_menu.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\util.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\util.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\ecc\ECCROMCC26XX.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\ecc\ECCROMCC26XX.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\SPI.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\SPI.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\hal\src\target\_common\TRNGCC26XX.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\hal\src\target\_common\TRNGCC26XX.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\UART.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\UART.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\uart\UARTCC26XX.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\uart\UARTCC26XX.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\hal\src\target\_common\hal_flash_wrapper.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\src\icall.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\src\inc\icall.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\inc\icall_addrs.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\src\icall_cc2650.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\src\icall_platform.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\src\icall_user_config.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\app\ble_user_config.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\inc\ble_user_config.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\app\icall_api_lite.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\inc\icall_ble_apimsg.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\gap.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\roles\gapbondmgr.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\gapgattserver.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\gatt.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\hci.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\osal\src\inc\osal_snv.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\mw\extflash\ExtFlash.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\mw\extflash\ExtFlash.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\dev_info\cc26xx\devinfoservice.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\dev_info\devinfoservice.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\gatt_profile_uuid.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\host\gatt_uuid.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\gatt_uuid.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\host\gattservapp_util.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\oad\cc26xx\oad.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\oad\cc26xx\oad.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\oad\cc26xx\oad_reset_service.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\oad\cc26xx\oad_target.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\oad\cc26xx\oad_target_external_flash.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\oad\cc26xx\oad_target_internal_flash.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\roles\cc26xx\peripheral.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\roles\cc26xx\peripheral.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\simple_profile\cc26xx\simple_gatt_profile.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\simple_profile\simple_gatt_profile.h</file>
+            <file>$PROJ_DIR$\..\stack\FlashROM_Library\Exe\cc2640r2lp_stack_FlashROM_Library.a</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\target\board.c</file>
+            <file>$PROJ_DIR$\..\config\ccfg_app_ble.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\rcosc\ccfg_app_ble_rcosc.c</file>
+            <file>$PROJ_DIR$\..\..\..\src\app\main.c</file>
+            <file>$PROJ_DIR$\..\config\app_ble.cfg</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\iar\cc26xx_app.icf</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\iar\cc26xx_app_and_stack.icf</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\iar\cc26xx_app_oad.icf</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\dma\UDMACC26XX.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\spi\SPICC26XXDMA.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\blelib\host\cc26xx_gatt_pxxx.a</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\blelib\host\cc26xx_att_pxxx.a</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\bcomdef.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\osal\src\inc\comdef.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\inc\icall_ble_api.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\kernel\tirtos\packages\ti\dpl\lib\dpl_cc26x0r2.arm3</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\blelib\host\cc26xx_l2cap_pxxx.a</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\peripheral.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\simple_gatt_profile.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\two_btn_menu.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\board_key.pbi</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\rf_mailbox.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\string.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product_string.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\crypto\CryptoCC26XX.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\rf_ble_cmd.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\inc\hw_crypto.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\TRNGCC26XX.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\simple_gatt_profile.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\devinfoservice.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Exe\ble5_simple_peripheral_cc2640r2lp_app_FlashROM_StackLibrary.out</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\simple_peripheral.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\simple_peripheral_menu.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\main.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\gattservapp_util.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\icall_user_config.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\main.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\gatt_uuid.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\peripheral.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\icall_api_lite.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\ble_user_config.pbi</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\ccfg_app_ble.pbi</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\rf\RF.h</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Obj\devinfoservice.o</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\Exe\ble5_simple_peripheral_cc2640r2lp_app_FlashROM_StackLibrary.bin</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\utils\RingBuf.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\uart.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\inc\hci_ext.h</file>
+            <file>$TOOLKIT_DIR$\lib\m7M_tl.a</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\devices\cc26x0r2\driverlib\bin\iar\driverlib.lib</file>
+            <file>$PROJ_DIR$\..\config\ble_r2.symbols</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\display\lib\display.arm3</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\mw\lcd\lib\lcd.arm3</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\blelib\host\cc26xx_profiles_pxxx.a</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\blelib\host\cc26xx_sm_pxxx.a</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\lib\drivers_cc26x0r2.arm3</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\rf\lib\rf_singleMode_cc26x0r2.arm3</file>
+            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\blelib\host\cc26xx_smp_pxxx.a</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\grlib\lib\grlib.arm3</file>
+            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\i2c\I2CCC26XX.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\I2C.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\blelib\host\cc26xx_gap_pxxx.a</file>
+            <file>$PROJ_DIR$\FlashROM_StackLibrary\List\ble5_simple_peripheral_cc2640r2lp_app_FlashROM_StackLibrary.map</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\target\board.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\..\..\..\xdctools_3_50_02_20_core\packages\xdc\std.h</file>
+        </outputs>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 357 391</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\board_key.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 346</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 96</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 58 30 393 215 38 31 259 13 89 11 19 125 208 68 18 33 36 34 123 137 136 49 64 126 124 43 25 35 121 45 130 135 75 283 129 1 127 28 12 29 27 21 42 39 47 134 8 17 142 140 213 69 71 66 78 139 211 292 279 392 128 256 32 10 351 26 24 48 44 37 46 122 133 143 214 67 73 74 22 187 203 131 132 138 141 144 209 210 212 92 77 65 70 72 76 265 41 264 14 192 194 199 287 62</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 259 8 393 89 12 11 29 32 10 351 28 27 13 31 30 26 34 24 25 17 18 21 19 38 35 42 36 37 33 39 44 43 45 46 47 48 49 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 208 209 210 211 212 213 92 214 64 65 66 67 68 69 70 71 72 73 74 75 76 77 265 292 78 215 41 22 14 264 279 1 392 58 192 194 187 199 283 287 203 62</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\src\app\LSM6DSM.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 152</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 153</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 259 12 70 393 159 42 34 30 140 11 148 158 65 202 195 66 71 264 13 43 38 19 124 6 14 10 167 68 76 339 213 89 8 144 24 31 122 17 18 78 267 22 32 188 109 162 169 74 64 75 69 292 283 35 143 39 25 45 125 126 147 2 266 268 145 348 29 146 351 163 201 189 160 72 172 190 156 154 214 41 231 62 141 256 27 26 37 33 44 48 46 49 127 142 4 349 225 178 161 183 175 56 73 179 168 174 171 57 149 373 150 151 67 215 249 232 287 28 36 21 47 121 123 128</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 4 22 14 13 12 11 29 32 10 145 146 259 89 351 348 349 147 163 64 65 66 68 188 109 70 172 158 156 201 178 161 189 162 167 69 71 72 73 74 183 179 202 169 195 174 190 168 159 154 171 160 175 56 57 266 264 76 149 373 75 150 151 214 67 292 78 215 41 148 225 249 339 232 231 2 213 62 6 283 267 268 287 140 393 28 27 31 30 26 34 24 25 141 17 42 36 19 38 35 33 39 44 43 37 18 21 45 46 47 48 49 121 122 123 126 142 125 8 124 127 128 143 144</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\src\app\mySPI.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 181</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 180</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 199 34 67 13 393 259 64 25 36 129 32 73 74 33 38 18 145 89 2 213 11 75 71 127 30 19 31 134 126 62 140 279 10 12 69 66 49 45 35 130 137 44 143 17 348 8 192 132 4 268 392 283 214 29 351 68 65 70 72 76 124 28 48 42 39 47 121 123 142 125 209 210 194 287 6 349 128 256 27 26 24 21 43 37 46 122 131 138 133 135 136 141 144 22 14 146 208 58 187 203</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 6 62 213 13 12 11 29 32 10 259 89 351 214 64 65 66 67 68 69 70 71 72 73 74 75 76 283 348 349 8 393 28 27 31 30 26 34 24 25 17 18 21 19 38 35 42 36 37 33 39 44 43 45 46 47 48 49 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 140 141 142 143 144 4 22 14 145 146 2 268 287 279 208 209 210 392 58 192 194 187 199 203</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\src\app\myUART.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 197</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 193</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 74 64 32 73 259 67 287 109 213 11 75 71 89 66 10 12 69 13 194 154 392 62 214 29 351 68 65 70 72 192 199 268 76 58 187 283 203</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 268 62 213 13 12 11 29 32 10 259 89 351 214 64 65 66 67 68 69 70 71 72 73 74 75 76 287 154 109 392 58 192 194 187 199 283 203</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\src\app\SPI.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 113</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 112</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 75 259 11 64 13 199 89 109 32 67 73 74 66 62 213 10 12 69 71 192 108 392 214 29 351 68 65 70 72 194 287 176 76 58 187 283 203</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 176 62 213 13 12 11 29 32 10 259 89 351 214 64 65 66 67 68 69 70 71 72 73 74 75 76 108 109 392 58 192 194 187 199 283 287 203</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\src\app\pwmled.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 111</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 110</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 34 393 36 31 38 140 74 33 8 144 29 89 19 30 18 45 42 124 25 133 134 187 199 126 12 11 44 39 47 122 35 17 128 68 70 64 132 268 351 28 13 48 141 125 135 136 203 259 392 98 139 32 10 256 27 26 24 37 43 49 208 46 121 123 21 142 143 127 209 210 58 283 214 66 71 65 72 76 287 104 192 194 62 213 67 69 75 73</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 104 98 89 12 11 29 32 10 351 13 126 393 28 27 31 30 26 34 24 25 17 38 35 42 36 19 44 43 37 33 39 139 45 46 47 49 121 122 123 18 21 48 140 141 142 125 8 124 127 128 143 144 208 209 210 132 133 134 135 136 199 392 58 192 194 259 187 283 287 203 62 213 214 64 65 66 67 68 69 70 71 72 73 74 75 76 268</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\src\app\simple_peripheral.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 358</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 84</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 30 11 13 225 88 199 393 123 31 126 45 142 259 2 349 21 304 340 35 27 34 42 49 210 237 246 232 338 247 22 348 95 89 392 12 32 8 144 256 43 25 19 47 121 38 125 209 41 215 208 243 306 253 91 283 292 324 268 351 10 141 143 37 17 128 18 229 374 250 301 311 249 339 305 245 369 240 352 192 62 68 74 70 64 140 185 279 310 322 1 6 273 29 28 26 24 36 44 33 39 48 46 122 124 127 78 264 14 300 285 303 302 313 244 248 239 238 231 251 40 94 92 347 228 194 287 213 66 71 65 72 76 58 187 203 214 67 69 75 73 277</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 348 12 11 29 32 10 351 349 140 393 89 28 27 13 31 30 26 34 24 25 141 17 42 36 19 38 35 33 39 44 43 37 18 21 45 46 47 48 49 121 122 123 126 142 125 8 124 127 128 143 144 208 209 210 185 292 259 78 215 41 22 14 264 279 340 300 338 339 374 305 225 249 232 231 238 237 253 251 303 250 302 301 245 243 313 304 247 311 244 306 248 369 94 88 92 95 347 91 352 40 240 239 246 228 285 229 310 324 322 392 58 192 194 187 199 283 287 203 62 213 214 64 65 66 67 68 69 70 71 72 73 74 75 76 1 268 6 2 273 277</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\src\app\simple_peripheral_menu.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 359</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 80</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 273 29 277 22 12 11 185 275 339 264 14 13 259 338 32 10 256</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 338 339 22 14 13 12 11 29 32 10 264 185 277 259 275 273</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\menu\two_btn_menu.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 345</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 86</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 11 32 12 185 264 13 277 338 256 10 339 14 22 29 259</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 185 13 12 11 29 32 10 338 339 22 14 264 277 259</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\util.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 255</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 196</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 30 25 37 142 126 33 34 18 209 137 279 38 393 121 35 31 130 259 215 208 219 45 32 351 24 19 43 42 123 49 8 221 129 133 11 292 17 128 89 28 12 10 13 26 21 44 47 141 125 223 138 135 136 134 78 22 339 338 124 127 256 29 27 48 36 39 46 122 140 210 143 144 220 222 131 132 41 264 14</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 259 8 393 89 12 11 29 32 10 351 28 27 13 31 30 26 34 24 25 17 18 21 19 38 35 42 36 37 33 39 44 43 45 46 47 48 49 121 122 123 124 125 126 127 128 208 209 140 141 142 143 144 210 219 220 221 137 222 223 129 130 131 132 133 134 135 136 138 292 78 215 41 22 14 264 338 339 279</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\ecc\ECCROMCC26XX.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 206</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 81</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 11 256 30 25 121 134 42 45 19 38 17 140 132 129 29 12 393 44 27 26 36 34 46 31 35 49 13 135 28 351 24 123 8 144 127 139 281 349 32 10 133 136 89 18 21 141 124 125 126 131 348 37 43 33 39 208 47 122 48 142 143 128 209 210 130 137 138</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 348 12 11 29 32 10 351 349 13 132 393 89 28 27 31 30 26 34 24 133 134 42 36 19 38 35 25 33 39 44 43 37 135 136 139 17 45 46 47 49 121 122 123 18 21 48 126 140 141 142 125 8 124 127 128 143 144 208 209 210 129 130 131 137 138 281</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\SPI.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 113</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 112</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 12 212 78 11 89 13 283 29 215 351 259 32 10</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 259 13 12 11 29 32 10 78 351 215 283 89 212</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\hal\src\target\_common\TRNGCC26XX.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 354</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 85</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 393 11 89 130 34 259 66 137 38 31 25 19 30 69 74 230 10 18 28 12 351 46 35 33 39 121 205 32 45 138 13 43 36 123 133 125 120 70 129 177 285 29 131 49 42 132 256 27 26 24 47 44 37 48 135 136 134 83 94 68 72 122 21 212 64 71 65 73</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 13 12 11 29 32 10 129 393 89 351 28 27 31 30 26 34 24 25 130 131 45 46 19 38 35 42 36 37 33 39 44 43 47 49 121 122 123 18 21 48 132 133 134 135 136 137 125 138 205 83 259 177 212 94 230 64 65 120 66 68 71 69 70 72 73 74 285</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\UART.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 106</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 107</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 32 89 287 12 13 212 11 10 259 29 351</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 259 13 12 11 29 32 10 287 89 351 212</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\drivers\uart\UARTCC26XX.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 170</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 191</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 13 189 69 74 287 66 373 75 259 71 211 12 29 155 64 70 160 202 195 68 214 11 89 92 67 73 201 72 162 159 169 212 177 163 168 351 94 205 88 77 188 158 109 167 172 190 156 154 166 289 32 10 83 372 213 65 76 178 161 183 175 56 179 174 171 57</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 13 12 11 29 32 10 166 259 89 351 212 88 155 205 83 177 94 289 287 211 213 92 214 64 65 66 67 68 69 70 71 72 73 74 75 76 77 372 373 154 163 188 109 172 158 156 201 178 161 189 162 167 183 179 202 169 195 174 190 168 159 171 160 175 56 57</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\src\icall.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 263</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 87</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 35 31 62 393 292 186 38 34 30 132 42 45 25 41 91 13 347 259 19 138 122 18 124 33 351 78 192 89 67 44 139 11 49 48 17 128 126 8 144 14 392 88 348 199 75 70 74 64 54 295 59 220 222 223 28 12 29 27 36 221 131 47 134 141 143 142 140 209 210 264 298 369 95 352 194 287 213 69 61 165 224 208 51 293 137 256 32 10 26 24 37 43 39 125 129 130 46 121 123 21 133 135 136 50 127 52 53 215 22 9 90 40 94 92 349 58 187 283 203 214 66 68 71 65 72 76 182 219 73 60 198</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 219 393 89 12 11 29 32 10 351 28 27 13 31 30 26 34 24 25 220 221 42 36 19 38 35 33 39 44 43 37 137 125 222 223 129 130 131 45 46 47 49 121 122 123 18 21 48 132 133 134 135 136 138 224 50 8 17 124 126 127 128 140 141 142 143 144 139 208 209 210 51 52 53 54 292 259 78 215 41 22 14 264 295 293 298 9 40 369 94 88 92 95 347 348 349 91 352 90 392 58 192 194 187 199 283 287 203 62 213 214 64 65 66 67 68 69 70 71 72 73 74 75 76 59 60 61 186 165 182 198</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\src\icall_cc2650.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 262</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 97</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 89 393 35 292 12 30 83 205 11 29 38 34 94 13 41 14 133 256 37 42 31 25 55 132 177 77 78 264 135 28 351 27 26 44 39 295 32 10 259 215 22 134 136 24 36 19 43 33 212</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 295 13 12 11 29 32 10 292 259 78 351 215 41 22 14 264 55 132 393 89 28 27 31 30 26 34 24 133 134 42 36 19 38 35 25 33 39 44 43 37 135 136 205 83 177 212 94 77</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\src\icall_user_config.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 362</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 79</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 14 41 13 10 92 72 9 11 12 351 353 259 369 350 32 94 89 347 349 95 264 88 68 22 281 292 285 29 91 352 348 78 66 69 70 74 40 215 205 93 212 83 64 71 65 73</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 22 14 13 12 11 29 32 10 369 259 94 89 351 88 92 95 347 348 349 91 352 281 9 40 41 264 292 78 215 350 205 83 93 64 65 66 68 353 71 69 70 72 73 74 212 285</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\app\ble_user_config.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 367</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 164</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 259 347 13 62 74 92 285 95 192 68 70 64 32 369 352 11 348 199 89 66 351 281 14 10 41 392 40 22 88 91 12 194 287 213 71 65 72 76 69 298 350 292 29 9 90 264 94 349 58 187 283 203 214 67 75 73 353 205 93 212 83 78 215</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 22 14 13 12 11 29 32 10 298 9 40 41 264 369 259 94 89 351 88 92 95 347 348 349 91 352 90 392 58 192 194 187 199 283 287 203 62 213 214 64 65 66 67 68 69 70 71 72 73 74 75 76 281 350 205 83 93 353 212 285 292 78 215</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\icall\app\icall_api_lite.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 366</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 82</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 13 338 225 351 369 22 12 29 232 264 92 90 247 249 339 41 11 94 89 259 347 349 95 304 285 14 32 10 231 292 78 215 243 88 91 352 348</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 304 338 339 22 14 13 12 11 29 32 10 264 225 249 232 231 292 259 78 351 215 41 247 243 90 285 369 94 89 88 92 95 347 348 349 91 352</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\dev_info\cc26xx\devinfoservice.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 356</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 370</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 393 21 38 35 30 349 215 208 250 338 351 11 31 91 13 310 12 32 41 17 128 89 24 34 37 19 18 141 311 22 253 225 95 279 10 8 45 126 42 43 25 285 374 301 232 247 88 348 292 340 29 259 78 264 14 49 124 127 256 28 27 26 47 121 123 209 210 144 300 237 243 304 306 246 249 339 305 245 369 240 352 228 48 44 33 36 39 46 122 125 140 142 143 229 303 302 313 244 248 239 238 231 251 40 94 92 347</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 348 12 11 29 32 10 351 349 292 259 13 78 215 41 22 14 264 279 8 393 89 28 27 31 30 26 34 24 25 17 18 21 19 38 35 42 36 37 33 39 44 43 45 46 47 48 49 121 122 123 124 125 126 127 128 208 209 140 141 142 143 144 210 340 300 338 339 374 305 225 249 232 231 238 237 253 251 303 250 302 301 245 243 313 304 247 311 244 306 248 369 94 88 92 95 347 91 352 40 240 239 246 228 285 229 310</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\host\gatt_uuid.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 364</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 260</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 22 12 29 232 13 264 225 243 304 249 339 41 11 338 313 14 32 10 231 292 259 78 351 215 247</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 339 22 14 13 12 11 29 32 10 264 225 249 232 231 292 259 78 351 215 41 304 338 247 243 313</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\host\gattservapp_util.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 361</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 258</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 12 393 35 45 44 30 25 17 306 49 28 10 13 26 34 18 300 338 251 238 208 127 89 11 48 31 42 33 38 142 144 243 339 259 225 347 8 124 32 351 24 19 237 304 246 292 215 92 349 340 126 128 256 29 27 21 43 36 39 47 121 123 209 143 285 374 250 301 311 22 231 78 305 40 41 94 279 37 46 122 125 140 210 141 229 303 302 313 245 244 248 239 264 14 249 232 253 247 369 240 88 95 91 352 348 228</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 279 259 8 393 89 12 11 29 32 10 351 28 27 13 31 30 26 34 24 25 17 18 21 19 38 35 42 36 37 33 39 44 43 45 46 47 48 49 121 122 123 124 125 126 127 128 208 209 140 141 142 143 144 210 340 300 338 339 22 14 264 374 305 225 249 232 231 292 78 215 41 238 237 253 251 303 250 302 301 245 243 313 304 247 311 244 306 248 369 94 88 92 95 347 348 349 91 352 40 240 239 246 228 285 229</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\roles\cc26xx\peripheral.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 365</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 343</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 12 34 42 89 31 134 393 66 338 30 44 123 126 45 142 259 13 248 25 18 38 8 144 49 210 75 65 68 313 339 11 253 225 95 132 340 351 10 198 19 135 35 121 125 209 67 72 76 215 208 303 292 91 349 32 37 48 46 141 143 17 128 64 69 70 74 41 22 229 305 302 245 244 239 264 238 231 247 88 348 186 140 214 279 322 29 256 28 27 36 26 24 43 33 39 165 182 21 47 133 136 122 124 127 71 73 78 14 300 285 374 237 250 243 301 304 311 306 246 249 232 369 240 352 228 251 40 94 92 347</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 348 12 11 29 32 10 351 349 393 89 28 27 13 42 31 30 26 34 24 36 19 38 35 25 33 39 44 43 37 186 18 21 45 46 47 48 165 182 198 132 133 134 135 136 140 141 17 49 121 122 123 126 142 125 8 124 127 128 143 144 208 209 210 214 259 64 65 66 67 68 69 70 71 72 73 74 75 76 292 78 215 41 22 14 264 279 340 300 338 339 374 305 225 249 232 231 238 237 253 251 303 250 302 301 245 243 313 304 247 311 244 306 248 369 94 88 92 95 347 91 352 40 240 239 246 228 285 229 322</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\profiles\simple_profile\cc26xx\simple_gatt_profile.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 355</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 344</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 125 393 31 30 12 264 127 256 38 140 229 305 11 78 25 19 49 239 339 238 92 347 324 13 126 45 44 18 124 245 231 225 243 259 279 29 14 128 28 351 27 34 35 17 142 302 244 251 338 292 340 349 32 10 41 215 22 8 208 89 48 42 33 36 39 46 122 143 303 313 248 237 40 94 348 26 24 21 43 37 47 121 123 209 210 141 144 300 285 374 250 301 304 311 306 246 249 232 253 247 369 240 88 95 91 352 228</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 348 12 11 29 32 10 351 349 292 259 13 78 215 41 22 14 264 279 8 393 89 28 27 31 30 26 34 24 25 17 18 21 19 38 35 42 36 37 33 39 44 43 45 46 47 48 49 121 122 123 124 125 126 127 128 208 209 140 141 142 143 144 210 340 300 338 339 374 305 225 249 232 231 238 237 253 251 303 250 302 301 245 243 313 304 247 311 244 306 248 369 94 88 92 95 347 91 352 40 240 239 246 228 285 229 324</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\target\board.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 207</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 257</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 334 42 12 26 13 373 29 351 259 33 30 69 11 119 199 89 64 62 38 182 393 25 125 92 214 68 63 75 71 256 43 31 45 123 134 155 194 287 67 73 74 177 34 37 48 121 19 44 66 94 211 205 115 200 192 187 283 203 32 10 213 186 204 388 117 165 24 35 46 130 18 137 88 353 348 347 372 212 157 389 114 116 65 70 72 76 129 185 350 369 289 285 335 28 27 198 36 39 21 47 131 49 132 138 122 133 135 136 173 83 93 77 265 95 91 352 349 154 118</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 200 192 194 13 12 11 29 32 10 259 89 351 187 199 283 287 203 62 213 214 64 65 66 67 68 69 70 71 72 73 74 75 76 63 393 28 27 186 31 30 26 34 24 38 35 25 42 36 19 44 43 37 33 39 18 21 45 46 47 48 165 182 198 129 130 131 49 121 122 123 132 133 134 135 136 137 125 138 157 173 185 204 88 205 83 177 212 94 350 92 93 353 211 77 265 369 95 347 348 349 91 352 289 372 373 154 155 334 285 335 389 388 119 115 114 118 116 117</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\config\ccfg_app_ble.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 368</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 254</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 217 32 65 13 12 10 64 218 11 29 259 216</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 216 13 12 11 29 32 10 64 259 65 217 218</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\src\app\main.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 360</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 363</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 259 393 31 125 89 12 43 35 38 348 292 11 33 34 30 17 25 90 91 13 347 132 273 10 24 44 135 126 209 71 199 75 72 177 338 56 36 28 32 351 26 39 83 94 256 134 45 19 122 49 140 42 8 144 208 210 101 22 277 88 192 62 67 68 64 205 185 100 41 322 66 298 37 29 27 128 48 46 18 124 99 141 98 78 215 74 65 9 40 95 352 194 287 213 69 70 76 212 133 136 127 21 47 121 123 105 142 143 139 103 102 264 14 339 57 369 392 92 349 58 187 283 203 214 73</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20 23 16 15 42 393 89 12 11 29 32 10 351 28 27 13 31 30 26 34 24 36 19 38 35 25 33 39 44 43 37 205 83 259 177 212 94 185 132 133 134 135 136 8 17 18 21 45 46 47 48 49 121 122 123 124 125 126 127 128 100 140 141 142 143 144 98 139 208 209 210 99 103 102 101 105 292 78 215 41 22 14 264 338 339 322 273 277 66 56 64 65 57 71 74 298 9 40 369 88 92 95 347 348 349 91 352 90 392 58 192 194 187 199 283 287 203 62 213 214 67 68 69 70 72 73 75 76</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\FlashROM_StackLibrary\Exe\ble5_simple_peripheral_cc2640r2lp_app_FlashROM_StackLibrary.out</name>
+            <outputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 391</file>
+                </tool>
+                <tool>
+                    <name>OBJCOPY</name>
+                    <file> 371</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 252 233 332 234 164 257 96 325 254 370 81 260 258 87 82 97 79 153 363 180 193 343 110 344 84 80 112 85 86 107 191 196 235 236 241 242 227 226 337 390 336 342 380 385 381 377 376 341 382 383 378 386 379 384 375 387</file>
+                </tool>
+            </inputs>
+        </file>
+    </configuration>
+    <configuration>
+        <name>FlashROM_StackLibrary_RCOSC</name>
+        <outputs />
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>ILINK</tool>
+        </forcedrebuild>
+    </configuration>
+</project>
