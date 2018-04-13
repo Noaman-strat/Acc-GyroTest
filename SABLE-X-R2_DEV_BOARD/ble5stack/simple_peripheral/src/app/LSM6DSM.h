@@ -11,413 +11,27 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <string.h>
-   
-typedef uint8 u8_t;
+ #include "Global.h"
+
+
+//typedef uint8 u8_t;
 typedef int8 i8_t;
 typedef uint16 u16_t;
 typedef int16 i16_t;
 
+
 /******************************************************************************
  * MACROS
  */
-// Wait 1 [ms]
-//#define WAIT_1MS()      {for(unsigned short i=0;i<32000;i++)asm("NOP"); }
-
-// Wait t [ms]
-#define WAIT_MS(t)                      \
-    do{                                 \
-        for(uint8 i = 0; i<t; i++)      \
-            WAIT_1ms();                 \
-    }while(0)
-
-
-
-
-#define BIT(x) ( (x) )
-// Operating Mode
-#define  LIS3DH_POWER_DOWN      0x00
-#define  LIS3DH_LOW_POWER 	0x01
-#define  LIS3DH_NORMAL		0x02
-
-// LIS3DH FullScale
-
-#define  LIS3DH_FULLSCALE_2     0x00
-#define  LIS3DH_FULLSCALE_4     0x01
-#define  LIS3DH_FULLSCALE_8     0x02
-#define  LIS3DH_FULLSCALE_16    0x03
-
-#define  LIS3DH_BLE_LSB		0x00
-#define  LIS3DH_BLE_MSB		0x01
-
-
-// State Temperature
-#define   MEMS_ENABLE		0x01
-#define   MEMS_DISABLE		0x00
-
-#define MEMS_SET                0x01
-#define MEMS_RESET              0x00
-
-// LIS3DH Axis Enable
-#define   LIS3DH_X_ENABLE       0x01
-#define   LIS3DH_X_DISABLE      0x00
-#define   LIS3DH_Y_ENABLE       0x02
-#define   LIS3DH_Y_DISABLE      0x00
-#define   LIS3DH_Z_ENABLE       0x04
-#define   LIS3DH_Z_DISABLE      0x00
-// Click Response
-#define LIS3DH_DCLICK_Z_P       0x24
-#define LIS3DH_DCLICK_Z_N       0x2C
-#define LIS3DH_SCLICK_Z_P       0x14
-#define LIS3DH_SCLICK_Z_N       0x1C
-#define LIS3DH_DCLICK_Y_P       0x22
-#define LIS3DH_DCLICK_Y_N       0x2A
-#define LIS3DH_SCLICK_Y_P       0x12
-#define LIS3DH_SCLICK_Y_N	0x1A
-#define LIS3DH_DCLICK_X_P       0x21
-#define LIS3DH_DCLICK_X_N       0x29
-#define LIS3DH_SCLICK_X_P       0x11
-#define LIS3DH_SCLICK_X_N       0x19
-#define LIS3DH_NO_CLICK         0x00
-
-
-#define  LIS3DH_INT1_6D_4D_DISABLE     0x00
-#define  LIS3DH_INT1_6D_ENABLE         0x01
-#define  LIS3DH_INT1_4D_ENABLE         0x02
-
-
-#define  LIS3DH_UP_SX                  0x44
-#define  LIS3DH_UP_DX                  0x42
-#define  LIS3DH_DW_SX                  0x41
-#define  LIS3DH_DW_DX                  0x48
-#define  LIS3DH_TOP                    0x60
-#define  LIS3DH_BOTTOM                 0x50
-
-// Int Mode
-
-#define  LIS3DH_INT_MODE_OR             0x00
-#define  LIS3DH_INT_MODE_6D_MOVEMENT    0x01
-#define  LIS3DH_INT_MODE_AND            0x02
-#define  LIS3DH_INT_MODE_6D_POSITION    0x03
-// Fifo Mode
-
-#define  LIS3DH_FIFO_BYPASS_MODE        0x00
-#define  LIS3DH_FIFO_MODE               0x01
-#define  LIS3DH_FIFO_STREAM_MODE        0x02
-#define  LIS3DH_FIFO_TRIGGER_MODE       0x03
-#define  LIS3DH_FIFO_DISABLE            0x04
-
-// Int trigger
-#define   LIS3DH_TRIG_INT1              0x00
-#define   LIS3DH_TRIG_INT2 		0x01
-// HPF Mode
-#define  LIS3DH_HPM_NORMAL_MODE_RES   0x00
-#define  LIS3DH_HPM_REF_SIGNAL        0x01
-#define  LIS3DH_HPM_NORMAL_MODE       0x02
-#define  LIS3DH_HPM_AUTORESET_INT     0x03
-
-// SPI Mode
-
-#define  LIS3DH_SPI_4_WIRE            0x00
-#define  LIS3DH_SPI_3_WIRE            0x01
-
-// HPF CutOff
-#define  LIS3DH_HPFCF_0               0x00
-#define  LIS3DH_HPFCF_1               0x01
-#define  LIS3DH_HPFCF_2               0x02
-#define  LIS3DH_HPFCF_3               0x03
-
-
-// LIS3DH ODR
-#define   LIS3DH_ODR_1HZ	0x01
-#define   LIS3DH_ODR_10HZ       0x02
-#define   LIS3DH_ODR_25HZ	0x03
-#define   LIS3DH_ODR_50HZ	0x04
-#define   LIS3DH_ODR_100HZ	0x05
-#define   LIS3DH_ODR_200HZ	0x06
-#define   LIS3DH_ODR_400HZ	0x07
-#define   LIS3DH_ODR_1620Hz_LP	0x08
-#define   LIS3DH_ODR_1344Hz_NP_5367HZ_LP  0x09
-
-//Register Definition
-#define LIS3DH_WHO_AM_I				0x0F 
-
-// CONTROL REGISTER 1
-#define LIS3DH_CTRL_REG1				0x20
-#define LIS3DH_ODR_BIT				        BIT(4)
-#define LIS3DH_LPEN					BIT(3)
-#define LIS3DH_ZEN					BIT(2)
-#define LIS3DH_YEN					BIT(1)
-#define LIS3DH_XEN					BIT(0)
-
-//CONTROL REGISTER 2
-#define LIS3DH_CTRL_REG2				0x21
-#define LIS3DH_HPM     				BIT(6)
-#define LIS3DH_HPCF					BIT(4)
-#define LIS3DH_FDS					BIT(3)
-#define LIS3DH_HPCLICK					BIT(2)
-#define LIS3DH_HPIS2					BIT(1)
-#define LIS3DH_HPIS1					BIT(0)
-
-//CONTROL REGISTER 3
-#define LIS3DH_CTRL_REG3				0x22
-#define LIS3DH_I1_CLICK				BIT(7)
-#define LIS3DH_I1_AOI1					BIT(6)
-#define LIS3DH_I1_AOI2				        BIT(5)
-#define LIS3DH_I1_DRDY1				BIT(4)
-#define LIS3DH_I1_DRDY2				BIT(3)
-#define LIS3DH_I1_WTM					BIT(2)
-#define LIS3DH_I1_ORUN					BIT(1)
-
-//CONTROL REGISTER 6
-#define LIS3DH_CTRL_REG6				0x25
-#define LIS3DH_I2_CLICK				BIT(7)
-#define LIS3DH_I2_INT1					BIT(6)
-#define LIS3DH_I2_BOOT         			BIT(4)
-#define LIS3DH_H_LACTIVE				BIT(1)
-
-//TEMPERATURE CONFIG REGISTER
-#define LIS3DH_TEMP_CFG_REG				0x1F
-#define LIS3DH_ADC_PD				        BIT(7)
-#define LIS3DH_TEMP_EN					BIT(6)
-
-//CONTROL REGISTER 4
-#define LIS3DH_CTRL_REG4				0x23
-#define LIS3DH_BDU					BIT(7)
-#define LIS3DH_BLE					BIT(6)
-#define LIS3DH_FS					BIT(4)
-#define LIS3DH_HR					BIT(3)
-#define LIS3DH_ST       				BIT(1)
-#define LIS3DH_SIM					BIT(0)
-
-//CONTROL REGISTER 5
-#define LIS3DH_CTRL_REG5				0x24
-#define LIS3DH_BOOT                                    BIT(7)
-#define LIS3DH_FIFO_EN                                 BIT(6)
-#define LIS3DH_LIR_INT1                                BIT(3)
-#define LIS3DH_D4D_INT1                                BIT(2)
-
-//REFERENCE/DATA_CAPTURE
-#define LIS3DH_REFERENCE_REG		                0x26
-#define LIS3DH_REF		                	BIT(0)
-
-//STATUS_REG_AXIES
-#define LIS3DH_STATUS_REG				0x27
-#define LIS3DH_ZYXOR                                   BIT(7)
-#define LIS3DH_ZOR                                     BIT(6)
-#define LIS3DH_YOR                                     BIT(5)
-#define LIS3DH_XOR                                     BIT(4)
-#define LIS3DH_ZYXDA                                   BIT(3)
-#define LIS3DH_ZDA                                     BIT(2)
-#define LIS3DH_YDA                                     BIT(1)
-#define LIS3DH_XDA                                     BIT(0)
-
-//STATUS_REG_AUX
-#define LIS3DH_STATUS_AUX				0x07
-
-//INTERRUPT 1 CONFIGURATION
-#define LIS3DH_INT1_CFG				0x30
-#define LIS3DH_ANDOR                                   BIT(7)
-#define LIS3DH_INT_6D                                  BIT(6)
-#define LIS3DH_ZHIE                                    BIT(5)
-#define LIS3DH_ZLIE                                    BIT(4)
-#define LIS3DH_YHIE                                    BIT(3)
-#define LIS3DH_YLIE                                    BIT(2)
-#define LIS3DH_XHIE                                    BIT(1)
-#define LIS3DH_XLIE                                    BIT(0)
-
-//FIFO CONTROL REGISTER
-#define LIS3DH_FIFO_CTRL_REG                           0x2E
-#define LIS3DH_FM                                      BIT(6)
-#define LIS3DH_TR                                      BIT(5)
-#define LIS3DH_FTH                                     BIT(0)
-
-//CONTROL REG3 bit mask
-#define LIS3DH_CLICK_ON_PIN_INT1_ENABLE                0x80
-#define LIS3DH_CLICK_ON_PIN_INT1_DISABLE               0x00
-#define LIS3DH_I1_INT1_ON_PIN_INT1_ENABLE              0x40
-#define LIS3DH_I1_INT1_ON_PIN_INT1_DISABLE             0x00
-#define LIS3DH_I1_INT2_ON_PIN_INT1_ENABLE              0x20
-#define LIS3DH_I1_INT2_ON_PIN_INT1_DISABLE             0x00
-#define LIS3DH_I1_DRDY1_ON_INT1_ENABLE                 0x10
-#define LIS3DH_I1_DRDY1_ON_INT1_DISABLE                0x00
-#define LIS3DH_I1_DRDY2_ON_INT1_ENABLE                 0x08
-#define LIS3DH_I1_DRDY2_ON_INT1_DISABLE                0x00
-#define LIS3DH_WTM_ON_INT1_ENABLE                      0x04
-#define LIS3DH_WTM_ON_INT1_DISABLE                     0x00
-#define LIS3DH_INT1_OVERRUN_ENABLE                     0x02
-#define LIS3DH_INT1_OVERRUN_DISABLE                    0x00
-
-//CONTROL REG6 bit mask
-#define LIS3DH_CLICK_ON_PIN_INT2_ENABLE                0x80
-#define LIS3DH_CLICK_ON_PIN_INT2_DISABLE               0x00
-#define LIS3DH_I2_INT1_ON_PIN_INT2_ENABLE              0x40
-#define LIS3DH_I2_INT1_ON_PIN_INT2_DISABLE             0x00
-#define LIS3DH_I2_INT2_ON_PIN_INT2_ENABLE              0x20
-#define LIS3DH_I2_INT2_ON_PIN_INT2_DISABLE             0x00
-#define LIS3DH_I2_BOOT_ON_INT2_ENABLE                  0x10
-#define LIS3DH_I2_BOOT_ON_INT2_DISABLE                 0x00
-#define LIS3DH_INT_ACTIVE_HIGH                         0x00
-#define LIS3DH_INT_ACTIVE_LOW                          0x02
-
-//INT1_CFG bit mask
-#define LIS3DH_INT1_AND                                0x80
-#define LIS3DH_INT1_OR                                 0x00
-#define LIS3DH_INT1_ZHIE_ENABLE                        0x20
-#define LIS3DH_INT1_ZHIE_DISABLE                       0x00
-#define LIS3DH_INT1_ZLIE_ENABLE                        0x10
-#define LIS3DH_INT1_ZLIE_DISABLE                       0x00
-#define LIS3DH_INT1_YHIE_ENABLE                        0x08
-#define LIS3DH_INT1_YHIE_DISABLE                       0x00
-#define LIS3DH_INT1_YLIE_ENABLE                        0x04
-#define LIS3DH_INT1_YLIE_DISABLE                       0x00
-#define LIS3DH_INT1_XHIE_ENABLE                        0x02
-#define LIS3DH_INT1_XHIE_DISABLE                       0x00
-#define LIS3DH_INT1_XLIE_ENABLE                        0x01
-#define LIS3DH_INT1_XLIE_DISABLE                       0x00
-
-//INT1_SRC bit mask
-#define LIS3DH_INT1_SRC_IA                             0x40
-#define LIS3DH_INT1_SRC_ZH                             0x20
-#define LIS3DH_INT1_SRC_ZL                             0x10
-#define LIS3DH_INT1_SRC_YH                             0x08
-#define LIS3DH_INT1_SRC_YL                             0x04
-#define LIS3DH_INT1_SRC_XH                             0x02
-#define LIS3DH_INT1_SRC_XL                             0x01
-
-//INT1 REGISTERS
-#define LIS3DH_INT1_THS                                0x32
-#define LIS3DH_INT1_DURATION                           0x33
-
-//INTERRUPT 1 SOURCE REGISTER
-#define LIS3DH_INT1_SRC				0x31
-
-//FIFO Source Register bit Mask
-#define LIS3DH_FIFO_SRC_WTM                            0x80
-#define LIS3DH_FIFO_SRC_OVRUN                          0x40
-#define LIS3DH_FIFO_SRC_EMPTY                          0x20
-
-//INTERRUPT CLICK REGISTER
-#define LIS3DH_CLICK_CFG				0x38
-//INTERRUPT CLICK CONFIGURATION bit mask
-#define LIS3DH_ZD_ENABLE                               0x20
-#define LIS3DH_ZD_DISABLE                              0x00
-#define LIS3DH_ZS_ENABLE                               0x10
-#define LIS3DH_ZS_DISABLE                              0x00
-#define LIS3DH_YD_ENABLE                               0x08
-#define LIS3DH_YD_DISABLE                              0x00
-#define LIS3DH_YS_ENABLE                               0x04
-#define LIS3DH_YS_DISABLE                              0x00
-#define LIS3DH_XD_ENABLE                               0x02
-#define LIS3DH_XD_DISABLE                              0x00
-#define LIS3DH_XS_ENABLE                               0x01
-#define LIS3DH_XS_DISABLE                              0x00
-
-//INTERRUPT CLICK SOURCE REGISTER
-#define LIS3DH_CLICK_SRC                               0x39
-//INTERRUPT CLICK SOURCE REGISTER bit mask
-#define LIS3DH_IA                                      0x40
-#define LIS3DH_DCLICK                                  0x20
-#define LIS3DH_SCLICK                                  0x10
-#define LIS3DH_CLICK_SIGN                              0x08
-#define LIS3DH_CLICK_Z                                 0x04
-#define LIS3DH_CLICK_Y                                 0x02
-#define LIS3DH_CLICK_X                                 0x01
-
-//Click-click Register
-#define LIS3DH_CLICK_THS                               0x3A
-#define LIS3DH_TIME_LIMIT                              0x3B
-#define LIS3DH_TIME_LATENCY                            0x3C
-#define LIS3DH_TIME_WINDOW                             0x3D
-
-//OUTPUT REGISTER
-#define LIS3DH_OUT_X_L					0x28
-#define LIS3DH_OUT_X_H					0x29
-#define LIS3DH_OUT_Y_L					0x2A
-#define LIS3DH_OUT_Y_H					0x2B
-#define LIS3DH_OUT_Z_L					0x2C
-#define LIS3DH_OUT_Z_H					0x2D
-
-//AUX REGISTER
-#define LIS3DH_OUT_1_L					0x08
-#define LIS3DH_OUT_1_H					0x09
-#define LIS3DH_OUT_2_L					0x0A
-#define LIS3DH_OUT_2_H					0x0B
-#define LIS3DH_OUT_3_L					0x0C
-#define LIS3DH_OUT_3_H					0x0D
-
-//STATUS REGISTER bit mask
-#define LIS3DH_STATUS_REG_ZYXOR                        0x80    // 1	:	new data set has over written the previous one
-							// 0	:	no overrun has occurred (default)
-#define LIS3DH_STATUS_REG_ZOR                          0x40    // 0	:	no overrun has occurred (default)
-							// 1	:	new Z-axis data has over written the previous one
-#define LIS3DH_STATUS_REG_YOR                          0x20    // 0	:	no overrun has occurred (default)
-							// 1	:	new Y-axis data has over written the previous one
-#define LIS3DH_STATUS_REG_XOR                          0x10    // 0	:	no overrun has occurred (default)
-							// 1	:	new X-axis data has over written the previous one
-#define LIS3DH_STATUS_REG_ZYXDA                        0x08    // 0	:	a new set of data is not yet avvious one
-                                                        // 1	:	a new set of data is available
-#define LIS3DH_STATUS_REG_ZDA                          0x04    // 0	:	a new data for the Z-Axis is not availvious one
-                                                        // 1	:	a new data for the Z-Axis is available
-#define LIS3DH_STATUS_REG_YDA                          0x02    // 0	:	a new data for the Y-Axis is not available
-                                                        // 1	:	a new data for the Y-Axis is available
-#define LIS3DH_STATUS_REG_XDA                          0x01    // 0	:	a new data for the X-Axis is not available
-
-#define LIS3DH_DATAREADY_BIT                           LIS3DH_STATUS_REG_ZYXDA
-
-
-//STATUS AUX REGISTER bit mask
-#define LIS3DH_STATUS_AUX_321OR                         0x80
-#define LIS3DH_STATUS_AUX_3OR                           0x40
-#define LIS3DH_STATUS_AUX_2OR                           0x20
-#define LIS3DH_STATUS_AUX_1OR                           0x10
-#define LIS3DH_STATUS_AUX_321DA                         0x08
-#define LIS3DH_STATUS_AUX_3DA                           0x04
-#define LIS3DH_STATUS_AUX_2DA                           0x02
-#define LIS3DH_STATUS_AUX_1DA                           0x01
-
-#define LIS3DH_MEMS_I2C_ADDRESS			        0x33
-
-//FIFO REGISTERS
-#define LIS3DH_FIFO_CTRL_REG			        0x2E
-#define LIS3DH_FIFO_SRC_REG			        0x2F
       
    /*******************************************************************************
  * Watchdog Timer
  */
 
-// WDCTL (0xC9) - Watchdog Timer Control
-  #define WDCTL_CLR                         0xF0
-  #define WDCTL_CLR0                        0x10
-  #define WDCTL_CLR1                        0x20
-  #define WDCTL_CLR2                        0x40
-  #define WDCTL_CLR3                        0x80
-  #define WDCTL_MODE                        (0x03 << 2)   // Selects mode, bit mask
-  #define WDCTL_MODE_IDLE                   (0x00 << 2)   // Idle, when in Timer mode
-  #define WDCTL_MODE_WD                     (0x02 << 2)   // Watchdog mode (when in watchdog mode writing to these bits have no effect.)
-  #define WDCTL_MODE_TIMER                  (0x03 << 2)   // Timer mode
-  #define WDCTL_INT                         (0x03)        // Interval select
-  #define WDCTL_INT_1_SEC                   (0x00)
-  #define WDCTL_INT_250_MSEC                (0x01)
-  #define WDCTL_INT_15_MSEC                 (0x02)
-  #define WDCTL_INT_2_MSEC                  (0x03)
-   
-      
-      
-
-      
-      
-      
-
-typedef struct {
-  signed short AXIS_X;
-  signed short AXIS_Y;
-  signed short AXIS_Z;
-} AxesRaw_t;
 
 
 void Start_WDT(void);
 void ClearWDT(void);
-
 
 /*
  *                  ACCELEROMETER - SPI Write / Read Setup 
@@ -451,16 +65,17 @@ char ReadGyroData(void);
 bool read_WHOAMI(void);
 uint8 read_LSM(void);
 
-u8_t LSM6DSM_ReadReg(u8_t reg);
-u8_t LSM6DSM_WriteReg(u8_t reg, u8_t val);
-u8_t LSM6DSM_GetAccAxesRaw(AxesRaw_t* buff);
+uint8 LSM6DSM_ReadReg(uint8 reg);
+uint8 LSM6DSM_WriteReg(uint8 reg, uint8 val);
+uint8 LSM6DSM_GetAccAxesRaw(AxesRaw_t* buff);
 void init_LSM6DSM(void);
 void init_Gryo_FIFO(void);
+void enable_Filtering(void);
 void LSM_Wakeup();
 void LSM_Sleep();
 void disable_LSM6DSM();
 void calibrate_LSM6DSM();
-u8_t LSM_check_tilt();
+uint8 LSM_check_tilt();
 void configure_LSM_freefall();
 void LSM6DSM_process_Interrupt();
 void configure_LSM_sigmotion();

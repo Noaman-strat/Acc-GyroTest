@@ -28,7 +28,26 @@ extern "C" {
 #define WAIT_100ms()      {for(unsigned long i=0;i<91400;i++)asm("NOP"); }
 #define WAIT_500ms()      {for(unsigned long i=0;i<457142;i++)asm("NOP"); }
    
+   typedef struct 
+{
+  signed short AXIS_X;
+  signed short AXIS_Y;
+  signed short AXIS_Z;
+} AxesRaw_t;
+  
+  #define BothLEDsOff     0
+#define GreenLED        1
+#define RedLED          2
+#define BothLEDsON      3
+
+#define DurationShort   1
+#define Duration2sec    2
+#define Duration1sec    3
+#define Duration4sec    4
+#define DurationInfinite        5
    
+  extern bool Flag_LED_LongOn;
+  
 extern  PIN_State pinCSState;
 extern  PIN_Handle pinCSHandle;
 
@@ -45,6 +64,10 @@ extern long SettableTiltThreshold;
 
 
 extern unsigned char TX_Data[9];
+
+
+void Start_Acc1SecClock(void);
+void Start_LEDClock(uint32_t dur);
   #ifdef __cplusplus
 }
 #endif

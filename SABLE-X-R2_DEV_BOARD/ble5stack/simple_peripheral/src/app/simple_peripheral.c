@@ -87,7 +87,8 @@
 #include "myUart.h"
 #include "mySPI.h"
 #include "Global.h"
-
+#include "UI.h"
+   
 #if !defined(Display_DISABLE_ALL)
 
 //#include <menu/two_btn_menu.h>
@@ -148,8 +149,8 @@
 #define SBP_PERIODIC_EVT_PERIOD               5000
 
 #define SBP_ACC_EVT_PERIOD                      1       //execute right away
-#define SPB_HIHG_SPEED_EVT_PERDIOD            1000    
-
+#define SPB_ACC_1SEC_EVT_PERIOD            500    
+#define SBP_LED_EVT_PERIOD                      1000
 // Application specific event ID for HCI Connection Event End Events
 #define SBP_HCI_CONN_EVT_END_EVT              0x0001
 
@@ -187,9 +188,10 @@
 #define SBP_ICALL_EVT                         ICALL_MSG_EVENT_ID // Event_Id_31
 #define SBP_QUEUE_EVT                         UTIL_QUEUE_EVENT_ID // Event_Id_30
 #define SBP_PERIODIC_EVT                      Event_Id_00
-#define SPB_HIHG_SPEED_EVT                    Event_Id_03
+#define SPB_ACC_1SEC_EVT                    Event_Id_03
 #define SBP_ACC_EVT                           Event_Id_04
-
+#define SBP_LED_EVT                           Event_Id_05
+   
 #ifdef FEATURE_OAD
 // Additional Application Events for OAD
 #define SBP_QUEUE_PING_EVT                    Event_Id_01
@@ -198,12 +200,18 @@
 #define SBP_ALL_EVENTS                        (SBP_ICALL_EVT        | \
                                                SBP_QUEUE_EVT        | \
                                                SBP_PERIODIC_EVT     | \
-                                               SBP_QUEUE_PING_EVT)
+                                               SBP_QUEUE_PING_EVT   | \
+                                               SPB_ACC_1SEC_EVT     | \
+                                               SBP_ACC_EVT          | \
+                                               SBP_LED_EVT)
 #else
 // Bitwise OR of all events to pend on
 #define SBP_ALL_EVENTS                        (SBP_ICALL_EVT        | \
                                                SBP_QUEUE_EVT        | \
-                                               SBP_PERIODIC_EVT)
+                                               SBP_PERIODIC_EVT     | \
+                                               SPB_ACC_1SEC_EVT     | \
+                                               SBP_ACC_EVT          | \
+                                               SBP_LED_EVT)
 #endif /* FEATURE_OAD */
 
 // Row numbers for two-button menu
@@ -243,8 +251,10 @@ static ICall_SyncHandle syncEvent;
 
 // Clock instances for internal periodic events.
 static Clock_Struct periodicClock;
-static Clock_Struct AccHighSpeedClock;
+static Clock_Struct Acc1SecClock;
 static Clock_Struct AccResponseClock;
+static Clock_Struct AccEventClock;
+static Clock_Struct LEDEventClock;
 
 // Queue object used for app messages
 static Queue_Struct appMsg;
@@ -493,12 +503,14 @@ static void SimpleBLEPeripheral_init(void)
   Util_constructClock(&periodicClock, SimpleBLEPeripheral_clockHandler,
                       SBP_PERIODIC_EVT_PERIOD, 0, false, SBP_PERIODIC_EVT);
   
-  //Accelerometer clock
-  Util_constructClock(&AccHighSpeedClock, SimpleBLEPeripheral_clockHandler,
-                      SPB_HIHG_SPEED_EVT_PERDIOD, 500, false, SPB_HIHG_SPEED_EVT);
+  //Accelerometer clock, start right away
+  Util_constructClock(&Acc1SecClock, SimpleBLEPeripheral_clockHandler,
+                    SPB_ACC_1SEC_EVT_PERIOD, 500, true, SPB_ACC_1SEC_EVT);
   Util_constructClock(&AccResponseClock, SimpleBLEPeripheral_clockHandler,
-                      SBP_ACC_EVT_PERIOD, 0, false, SBP_ACC_EVT); 
-  
+                    SBP_ACC_EVT_PERIOD, 0, false, SBP_ACC_EVT); 
+  Util_constructClock(&LEDEventClock, SimpleBLEPeripheral_clockHandler,
+                    SBP_LED_EVT_PERIOD, 0, false, SBP_LED_EVT); 
+   
   dispHandle = Display_open(SBP_DISPLAY_TYPE, NULL);
 
   // Set GAP Parameters: After a connection was established, delay in seconds
@@ -800,12 +812,19 @@ static void SimpleBLEPeripheral_taskFxn(UArg a0, UArg a1)
         SimpleBLEPeripheral_performPeriodicTask();
       }
       
-      if (events & SPB_HIHG_SPEED_EVT)
+      if (events & SPB_ACC_1SEC_EVT)
       {
+        
+        Util_startClock(&Acc1SecClock);
       }
       
       if (events & SBP_ACC_EVT)
       {
+      }
+      
+      if (events & SBP_LED_EVT)
+      {
+        ChangeLED(BothLEDsOff, DurationShort);
       }
       
 #ifdef FEATURE_OAD
@@ -1150,8 +1169,7 @@ static void SimpleBLEPeripheral_handleKeys(uint8_t keys)
     if (PIN_getInputValue(Board_PIN_BUTTON0) == 0)
 #endif // CC2650DK_7ID, CC2650_LAUNCHXL, CC2640R2_LAUNCHXL
     {
-      PIN_setOutputValue(pinLEDGHandle, Board_GLED, 1);
-      PIN_setOutputValue(pinLEDRHandle, Board_RLED, 0);
+      ChangeLED(GreenLED, Duration2sec);
 
       //tbm_buttonLeft();
     }
@@ -1165,8 +1183,7 @@ static void SimpleBLEPeripheral_handleKeys(uint8_t keys)
     if (PIN_getInputValue(Board_PIN_BUTTON1) == 0)
 #endif // CC2650DK_7ID, CC2650_LAUNCHXL, CC2640R2_LAUNCHXL
     {
-      PIN_setOutputValue(pinLEDGHandle, Board_GLED, 0);
-      PIN_setOutputValue(pinLEDRHandle, Board_RLED, 1);
+      ChangeLED(RedLED, Duration2sec);
       //tbm_buttonRight();
     }
   }
@@ -1586,3 +1603,16 @@ bool SimpleBLEPeripheral_doSetPhy(uint8 index)
 
 /*********************************************************************
 *********************************************************************/
+
+void Start_Acc1SecClock(void)
+{
+  Util_startClock(&Acc1SecClock);
+}
+
+void Start_LEDClock(uint32_t dur)
+{
+ // Util_rescheduleClock(&LEDEventClock, dur);
+  
+  Util_startClock(&LEDEventClock);
+  
+}

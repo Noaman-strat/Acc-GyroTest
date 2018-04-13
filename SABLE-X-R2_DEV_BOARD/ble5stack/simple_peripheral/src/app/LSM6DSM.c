@@ -32,7 +32,7 @@ signed scale goes from 0 to 32767, -32767 to -1
 #include "float.h"
 #include "myUART.h"
 #include <ti/sysbios/knl/Task.h>
-
+#include "UI.h"
 
 // Accelerometer connected at (names in brackets are LIS3DH names)
 // P0_4 = CS_N (CSB)
@@ -59,8 +59,8 @@ AxesRaw_t accData;
 int16 Delta_X=0;
 int16 Delta_Y=0;
 int16 Delta_Z=0;
-u8_t old_position=0x00;
-u8_t position=0x00;
+uint8 old_position=0x00;
+uint8 position=0x00;
 
 
 double Z_Init_Angle = 0;
@@ -138,7 +138,68 @@ void disable_LSM6DSM(){
     // Configure CS as output
 }
   
+
 void init_LSM6DSM(void){
+  
+  uint8 RegVal = 0;
+  
+  // *** Configure accelerometer ***
+  
+  //Reboot sequence:
+  //1 - Set Gyro in power down
+  LSM6DSM_WriteReg(LSM6DSM_CTRL2_G,0x00); //Gyro powerdown
+  //2 - Get Acc in high power mode
+  LSM6DSM_WriteReg(LSM6DSM_CTRL6_C, 0x90);
+  //3 - set one to the boot pit
+  LSM6DSM_WriteReg(LSM6DSM_CTRL3_C,0x80); //reboot
+  //4 - Wait 15 ms
+  //WAIT_50ms();
+  Task_sleep(5000);
+  
+  enable_Filtering();
+  
+  RegVal = LSM6DSM_ReadReg(LSM6DSM_CTRL1_XL);
+  LSM6DSM_WriteReg(LSM6DSM_CTRL1_XL,(RegVal | LSM6DSM_ODR_12_5HZ | LSM6DSM_FULLSCALE_2)); //free fall requires faster ODR, 12.5 Hz wont be enough
+  
+  //Set mode to Low power
+  //we are reading the current value as to not overwrite the other bits. dont know the default value
+  RegVal = LSM6DSM_ReadReg(LSM6DSM_CTRL6_C);
+  LSM6DSM_WriteReg(LSM6DSM_CTRL6_C, (RegVal | 0x10 | 0x08));     //disable high power mode, set XL user offset bit to 1
+  //LSM6DSM_WriteReg(LSM6DSM_CTRL6_G, (RegVal | 0x04));     // enable high power mode, set XL user offset bit to 1
+ 
+  // *** Configure Gyro ***
+  
+  //Setup Gyro in Low power mode
+  LSM6DSM_WriteReg(LSM6DSM_CTRL7_G, (GYRO_POWER_MODE_LOW | GYRO_HIGHPASS_FILTER_DIS));
+
+  //Set Gyro ODR
+  LSM6DSM_WriteReg(LSM6DSM_CTRL2_G,(GYRO_ODR_12_5HZ | GYRO_FULLSCALE_125)); 
+  
+  //setup Gyro Interrupt on INT1
+  //LSM6DSM_WriteReg(LSM6DSM_DRDY_PULSE_CFG, 0x80); //pulse the interrupt
+  //LSM6DSM_WriteReg(LSM6DSM_INT1_CTRL,0x02);
+  
+  //Disable FIFO
+  LSM6DSM_WriteReg(LSM6DSM_FIFO_CTRL3, 0x00);
+  LSM6DSM_WriteReg(LSM6DSM_FIFO_CTRL5, 0x00);
+  
+  LSM6DSM_WriteReg(LSM6DSM_CTRL3_C, 0x00);
+  //init_Gryo_FIFO();
+  
+  // Wait 2ms for accelerometer to power up and settle
+  //WAIT_10ms();
+  Task_sleep(1000);
+
+  calibrate_LSM6DSM();
+    
+   LSM6DSM_WriteReg(LSM6DSM_CTRL10_C, 0x04);
+   //WAIT_50ms();
+   Task_sleep(5000);
+   configure_LSM_tiltInt();
+   
+}
+
+void init_LSM6DSM_AccONLY(void){
  
   
     uint8_t RegVal = 0;
@@ -266,7 +327,29 @@ void init_Gryo_FIFO(void){
   //StartMotionCalibration(); //get home gyro position
 }
 
-u8_t LSM6DSM_ReadReg(u8_t reg){
+void enable_Filtering(void)
+{
+  //enable Gryo LPF1
+  
+  RegVal1 = LSM6DSM_ReadReg(LSM6DSM_FIFO_CTRL4);
+  LSM6DSM_WriteReg(LSM6DSM_FIFO_CTRL4, (RegVal1 | 0x02));        //LPF1_SEL_G = 1
+  
+  //set Gyro LPF1 bandwidth
+  RegVal1 = LSM6DSM_ReadReg(LSM6DSM_CTRL6_C);
+  LSM6DSM_WriteReg(LSM6DSM_CTRL6_C, (RegVal1 | 0x02));  //FTYPE[1:0] = 10 (155 Hz)
+   
+  //Accelerometer
+  RegVal1 = LSM6DSM_ReadReg(LSM6DSM_CTRL1_XL);
+  LSM6DSM_WriteReg(LSM6DSM_CTRL1_XL, (RegVal1 | 0x02));  //LPF1_BW_SEL (bit 1) = 1 (ODR/4) or 0 )ODR/2)
+  
+  RegVal1 = LSM6DSM_ReadReg(LSM6DSM_CTRL8_XL);
+  LSM6DSM_WriteReg(LSM6DSM_CTRL8_XL, (RegVal1 & 0x04));   //HP_SLOPE_XL_EN
+  WAIT_10ms();
+  
+  //RegVal = 1;
+}
+
+uint8 LSM6DSM_ReadReg(uint8 reg){
 
       char data[2];
 
@@ -275,7 +358,7 @@ u8_t LSM6DSM_ReadReg(u8_t reg){
     return(read_accelerometer(reg, &data, 2));
 }
 
-u8_t LSM6DSM_WriteReg(u8_t reg, u8_t val){
+uint8 LSM6DSM_WriteReg(uint8 reg, uint8 val){
     char dataW[2];
     dataW[0] = reg;
     dataW[1] = val;
@@ -347,7 +430,7 @@ void Read_Accelerometer_3Axis(void){
 
 /**************************************************************************//**
 * @fn      Acc_Moving
-* Written By:  Aleksandar Milanovic
+* Written By:  Noaman Makki
  * Date:        OCT 5th 2015
 * @brief    6D of motion check 
 *
@@ -433,10 +516,10 @@ uint8_t Acc_Moving(void){
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-u8_t LSM6DSM_GetAccAxesRaw(AxesRaw_t* buff) {
+uint8 LSM6DSM_GetAccAxesRaw(AxesRaw_t* buff) {
   short int value;
-  u8_t valueL;
-  u8_t valueH;
+  uint8 valueL;
+  uint8 valueH;
   uint8_t Stat=0;
   
   
@@ -482,7 +565,7 @@ u8_t LSM6DSM_GetAccAxesRaw(AxesRaw_t* buff) {
 }
 
 //converts acc Data into angles
-u8_t LSM_check_tilt(){
+uint8 LSM_check_tilt(){
   LSM6DSM_GetAccAxesRaw( &accData);
   
   //convert into positive G

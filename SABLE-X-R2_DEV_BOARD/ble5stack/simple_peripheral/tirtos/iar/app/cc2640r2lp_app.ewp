@@ -2210,6 +2210,12 @@
             <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\menu\two_btn_menu.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\..\src\app\UI.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\src\app\UI.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\..\..\..\..\..\..\source\ti\ble5stack\common\cc26xx\util.c</name>
         </file>
         <file>
