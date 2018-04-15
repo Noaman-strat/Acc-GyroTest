@@ -41,18 +41,7 @@ extern char Gyro_Rotation_Axis; //0 for X, 1 for Y, 2 for Z
 #define         Y_AXIS  1
 #define         Z_AXIS  2
 
-extern int Gyro_Home_Angle_X; //+-180 
-extern int Gyro_Home_Angle_Y; //+-180
-extern int Gyro_Home_Angle_Z; //+-180
 
-extern char Gyro_DataSetsToRead;
-
-extern int Gyro_X[50];
-extern int Gyro_Y[50];
-extern int Gyro_Z[50];
-extern int Acc_X[50];
-extern int Acc_Y[50];
-extern int Acc_Z[50];
 
 //extern float Angle_X[50];
 //extern float Angle_Y[50];
@@ -138,6 +127,11 @@ void EndMotionCalibration(void);
 void CalculateAngle(char datasets);
 
 void GetHomePositionOrientation(void);
+
+void Process_Int(void);
+
+void Check_for_Quadrant_Change(void);
+
 
 //bool read_WHOAMI(void);
 /*********************************************************************

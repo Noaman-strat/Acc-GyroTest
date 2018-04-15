@@ -85,11 +85,16 @@ void LSM_Clear_tiltInt();
 double CalcTiltAngle(float my_gVal1, float my_gVal2, float my_gVal3);
 float CalcGValue(float myVal);
 
+uint8 CheckQuadrant();
+void LSM_Wakeup_Gyro(void);
+void LSM_Sleep_Gyro(void);
+
 void LSM6DSM_process_Gyro_Interrupt(void);
+char ReadGyroData(void);
 
 extern AxesRaw_t accData;
 
-#define LSM6DSM_FIFO_THRESHOLD          36
+#define LSM6DSM_FIFO_THRESHOLD          72
 
 #define LSM_offset_res  0.015625
 
@@ -293,7 +298,7 @@ extern AxesRaw_t accData;
 
 //FIFO_CTRL5 - FIFO MODE
 #define FIFO_MODE_DISABLED              0x00
-#define FIFO_MODE_STOP_WHEN_FULL        0x00
+#define FIFO_MODE_STOP_WHEN_FULL        0x01
 #define FIFO_MODE_CONTINUOUS            0x06
 
 //FIFO_CTRL5 - FIFO ODR

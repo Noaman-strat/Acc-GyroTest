@@ -18,7 +18,7 @@
 #include "myUART.h"
 #include "util.h"
 #include "UI.h"
-//#include <ti/drivers/pin/PINCC26XX.h>
+
 
 #include "board.h"
 
@@ -35,6 +35,54 @@ uint8_t         receiveBuffer[MSGSIZE] = {0};
 SPI_Transaction spiTransaction;
 bool            transferOK = 0;
 
+double UpperTiltThreshold = 0.0;
+double LowerTiltThreshold = 0.0;
+
+bool Gyro_Started = false;
+bool FirstTimeRun = true;
+char Gyro_DataSetsToRead = 0;
+
+int Gyro_X[50] = {0};
+int Gyro_Y[50] = {0};
+int Gyro_Z[50] = {0};
+int Acc_X[50] = {0};
+int Acc_Y[50] = {0};
+int Acc_Z[50] = {0};
+
+//float Angle_X[50] = {0};
+//float Angle_Y[50] = {0};
+//float Angle_Z[50] = {0};
+
+//float AccAngle_X[50] = {0};
+//float AccAngle_Y[50] = {0};
+//float AccAngle_Z[50] = {0};
+
+short Gyro_Offset_X = 0; //-40;
+short Gyro_Offset_Y = 0; //380;
+short Gyro_Offset_Z = 0; //400;
+
+
+double AngleX1 = 0.0;
+double AngleY1 = 0.0;
+double AngleZ1 = 0.0;
+
+unsigned int ACC_EVENT_PERIOD = 500;
+
+bool Motion_Calibration_Running = false;
+
+uint8 CurrentOrientation =0;
+uint8 PreviousOrientation =0;
+
+AxesRaw_t* Gyro_Home_Position;
+
+short CalculatedBeaconAngle = 0;
+
+char CalibrationCounter = 0;
+char HomePositionSet = 0;
+
+enum devOrientation DeviceOrientation = NotIdentified;
+
+bool EventRecord = true;
 
 char IAmCalled = 0;
 
@@ -45,16 +93,11 @@ uint32_t standbyDurationMs = 100;
 PIN_State pinCSState;
 PIN_Handle pinCSHandle;
   
-PIN_State  LSM_INT1_pin;
-PIN_Handle LSM_INT1_pin_handle;
 
-PIN_State  LSM_INT2_pin;
-PIN_Handle LSM_INT2_pin_handle;
 
 // Debounce timeout in milliseconds
-#define INTPIN_DEBOUNCE_TIMEOUT  100
-  // Value of INT Pin generated in LSM
-static uint8_t LSM_INT;
+#define INTPIN_DEBOUNCE_TIMEOUT  15
+
 
 // Key debounce clock
 static Clock_Struct LSM_INT_pinClock;
@@ -69,17 +112,7 @@ Hwi_Struct callbackPINKeys;
 /*********************************************************************
  * LOCAL FUNCTIONS
  */
-static void LSM_INT_pinChangeHandler(UArg a0);
-static void LSM_INTCallback(PIN_Handle hPin, PIN_Id pinId);
 
-
-  // PIN configuration structure to set all KEY pins as inputs with pullups enabled
-PIN_Config LSM_INT_PinsCfg[] =
-{
-    Board_LSM_INT1          | PIN_GPIO_OUTPUT_DIS  | PIN_INPUT_EN |  PIN_PULLUP,
-    Board_LSM_INT2          | PIN_GPIO_OUTPUT_DIS  | PIN_INPUT_EN |  PIN_PULLUP,
-    PIN_TERMINATE
-};
 
 //bool mySPI_Config(void)
 static void spiThread(UArg s_arg0, UArg s_arg1)
@@ -96,21 +129,11 @@ static void spiThread(UArg s_arg0, UArg s_arg1)
   spiParams.dataSize = 8;       // 8-bit data size
   AccSPI = SPI_open(Board_SPI0, &spiParams);
   
-  
-  //Initialize LSM6DSM INT1 Interrupt
-    // Initialize KEY pins. Enable int after callback registered
-  LSM_INT1_pin_handle = PIN_open(&LSM_INT1_pin, LSM_INT_PinsCfg);
-  PIN_registerIntCb(LSM_INT1_pin_handle, LSM_INTCallback);
-  
-  LSM_INT2_pin_handle = PIN_open(&LSM_INT2_pin, LSM_INT_PinsCfg);
-  PIN_registerIntCb(LSM_INT2_pin_handle, LSM_INTCallback);
-  
-  PIN_setConfig(LSM_INT1_pin_handle, PIN_BM_IRQ, Board_LSM_INT1 | PIN_IRQ_NEGEDGE);
-  PIN_setConfig(LSM_INT2_pin_handle, PIN_BM_IRQ, Board_LSM_INT2 | PIN_IRQ_NEGEDGE);
+
   
   // Setup callback for INT pins
-  Util_constructClock(&LSM_INT_pinClock, LSM_INT_pinChangeHandler,
-                     INTPIN_DEBOUNCE_TIMEOUT, 0, false, 0);
+ // Util_constructClock(&LSM_INT_pinClock, LSM_INT_pinChangeHandler,
+  //                   INTPIN_DEBOUNCE_TIMEOUT, 0, false, 0);
 
   // Set the application callback
   //appKeyChangeHandler = appKeyCB;
@@ -125,14 +148,45 @@ static void spiThread(UArg s_arg0, UArg s_arg1)
 //  {
     //Setup LSM6DSM
   read_WHOAMI();
+  
+  Motion_Calibration_Running = true;
+  HomePositionSet = false;
+  
+  AngleX1 = 0;
+  AngleY1 = 0;
+  AngleZ1 = 0;
+  CalibrationCounter = 0;
+  
   init_LSM6DSM();
   //init_LSM6DSM_AccONLY();  
-  Task_sleep(standbyDurationMs*10);
+  //Task_sleep(standbyDurationMs*10);
   //  LSM_Wakeup();
     
     while(1)
     {
       //Wait for time LARGER than ACC ODR
+      Task_sleep(standbyDurationMs*10);   
+      /*
+      Gyro_FIFOStatus = LSM6DSM_ReadReg(LSM6DSM_FIFO_STATUS2);
+      if (Gyro_FIFOStatus> 72)
+      {
+        Process_Int();
+      }
+      */
+      /*
+      RegInt = LSM6DSM_ReadReg(LSM6DSM_FIFO_STATUS2);
+      
+      if ((RegInt & BV(7)))
+      {
+        Process_Int();
+        ChangeLED(GreenLED, DurationShort);       
+      }
+      else
+      {
+        
+      }
+      */
+      /*
       Task_sleep(standbyDurationMs*200);   
       
       RegInt = LSM6DSM_ReadReg(WRIST_TILT_IA);
@@ -146,7 +200,7 @@ static void spiThread(UArg s_arg0, UArg s_arg1)
       {
         
       }
-      
+      */
      /* 
       if (Acc_Moving()==true)
       {
@@ -219,27 +273,30 @@ void spiACC_createTask(void)
  *
  * @return  none
  */
-
+/*
 static void LSM_INTCallback(PIN_Handle hPin, PIN_Id pinId)
 {
   LSM_INT = 0;
 
-  if ( PIN_getInputValue(Board_LSM_INT1) == 0 )
+  if ( PIN_getInputValue(Board_LSM_INT1) == 1)
   {
     LSM_INT |= 0x0001;
+    Process_Int();
   }
 
-  if ( PIN_getInputValue(Board_LSM_INT2) == 0 )
+  if ( PIN_getInputValue(Board_LSM_INT2) == 1 )
   {
-    LSM_Clear_tiltInt();
+    Process_Int();
+   // LSM_Clear_tiltInt();
     LSM_INT |= 0x0002;
     
   }
 
-  Util_startClock(&LSM_INT_pinClock);
+ // Util_startClock(&LSM_INT_pinClock);
 }
+*/
 
-
+/*
 static void LSM_INT_pinChangeHandler(UArg a0)
 {
   if (appLSM_INTHandler != NULL)
@@ -248,10 +305,12 @@ static void LSM_INT_pinChangeHandler(UArg a0)
     (*appLSM_INTHandler)(LSM_INT);
   }
 }
-
+*/
 
 void Process_Int(void)
 {
+  //CalibrationCounter++;
+  //Gyro_FIFOStatus = LSM6DSM_ReadReg(LSM6DSM_FIFO_STATUS2);
   
   Gyro_FIFOStatus = LSM6DSM_ReadReg(LSM6DSM_FIFO_STATUS2);
   if (!(Gyro_FIFOStatus & FIFO_NOT_EMPTY) && (Gyro_FIFOStatus & FIFO_DATA_THRESHOLD_REACHED)) //if FIFO is not empty
@@ -376,6 +435,42 @@ void GetHomePositionOrientation(void)
   else if (Avrg_gY > 14000)
     DeviceOrientation = Orientation_Z;
 
+}
+
+//checks to see if current asset position is in a different quadrant than the last time this routine was called
+//if so, start the Gyro at 12.5 Hz to record and analyze the movement
+//the initial Gyro reading is taken when the Device is Woken up after install.
+void Check_for_Quadrant_Change(void)
+{
+  //checK if Accelerometer has detected movement
+  
+  if (!Gyro_Started)
+  { 
+    AngleX1=0;
+    AngleY1=0;
+    AngleZ1=0;
+    LSM_Sleep_Gyro();
+    Task_sleep(2000);
+    init_Gryo_FIFO();
+    Task_sleep(2000);
+    LSM_Wakeup_Gyro();
+  
+   
+  }
+  
+  //StartMotionCalibration();
+  //If Gyro is already recording
+  
+  if (Gyro_Started)
+  { 
+    //check FIFO status
+    Gyro_FIFOStatus = LSM6DSM_ReadReg(LSM6DSM_FIFO_STATUS2);
+    if (!(Gyro_FIFOStatus & FIFO_NOT_EMPTY) && (Gyro_FIFOStatus & FIFO_DATA_THRESHOLD_REACHED)) //if FIFO is not empty
+    {
+      CalculateAngle(ReadGyroData());
+    }
+  }
+  
 }
 
 void CalculateAngle(char datasets)

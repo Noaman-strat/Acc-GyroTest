@@ -138,6 +138,23 @@ void disable_LSM6DSM(){
     // Configure CS as output
 }
   
+void LSM_Wakeup_Gyro(void)
+{
+  Gyro_Started = true;
+  
+  //Set Gyro ODR
+  LSM6DSM_WriteReg(LSM6DSM_CTRL2_G,(GYRO_ODR_12_5HZ | GYRO_FULLSCALE_125)); 
+  
+  Task_sleep(1000);
+  
+}
+
+void LSM_Sleep_Gyro(void)
+{
+  LSM6DSM_WriteReg(LSM6DSM_CTRL2_G,(GYRO_ODR_PD | GYRO_FULLSCALE_125)); //free fall requires faster ODR, 12.5 Hz wont be enough      
+  
+  Gyro_Started = false;
+}
 
 void init_LSM6DSM(void){
   
@@ -154,17 +171,17 @@ void init_LSM6DSM(void){
   LSM6DSM_WriteReg(LSM6DSM_CTRL3_C,0x80); //reboot
   //4 - Wait 15 ms
   //WAIT_50ms();
-  Task_sleep(5000);
+  Task_sleep(10000);
   
-  enable_Filtering();
+  //enable_Filtering();
   
   RegVal = LSM6DSM_ReadReg(LSM6DSM_CTRL1_XL);
-  LSM6DSM_WriteReg(LSM6DSM_CTRL1_XL,(RegVal | LSM6DSM_ODR_12_5HZ | LSM6DSM_FULLSCALE_2)); //free fall requires faster ODR, 12.5 Hz wont be enough
+  LSM6DSM_WriteReg(LSM6DSM_CTRL1_XL, LSM6DSM_ODR_12_5HZ | LSM6DSM_FULLSCALE_2); //free fall requires faster ODR, 12.5 Hz wont be enough
   
   //Set mode to Low power
   //we are reading the current value as to not overwrite the other bits. dont know the default value
   RegVal = LSM6DSM_ReadReg(LSM6DSM_CTRL6_C);
-  LSM6DSM_WriteReg(LSM6DSM_CTRL6_C, (RegVal | 0x10 | 0x08));     //disable high power mode, set XL user offset bit to 1
+  LSM6DSM_WriteReg(LSM6DSM_CTRL6_C, (0x10 | 0x08));     //disable high power mode, set XL user offset bit to 1
   //LSM6DSM_WriteReg(LSM6DSM_CTRL6_G, (RegVal | 0x04));     // enable high power mode, set XL user offset bit to 1
  
   // *** Configure Gyro ***
@@ -177,25 +194,26 @@ void init_LSM6DSM(void){
   
   //setup Gyro Interrupt on INT1
   //LSM6DSM_WriteReg(LSM6DSM_DRDY_PULSE_CFG, 0x80); //pulse the interrupt
-  //LSM6DSM_WriteReg(LSM6DSM_INT1_CTRL,0x02);
+  
+    LSM6DSM_WriteReg(LSM6DSM_DRDY_PULSE_CFG, 0x00); //pulse the interrupt
+  LSM6DSM_WriteReg(LSM6DSM_INT2_CTRL,0x00); //Fifo threshold interrupt on Int_1
+  LSM6DSM_WriteReg(LSM6DSM_INT1_CTRL,0x00); //Fifo threshold interrupt on Int_1
   
   //Disable FIFO
   LSM6DSM_WriteReg(LSM6DSM_FIFO_CTRL3, 0x00);
   LSM6DSM_WriteReg(LSM6DSM_FIFO_CTRL5, 0x00);
   
   LSM6DSM_WriteReg(LSM6DSM_CTRL3_C, 0x00);
-  //init_Gryo_FIFO();
+  LSM6DSM_WriteReg(LSM6DSM_CTRL10_C, 0x00);
+  init_Gryo_FIFO();
   
   // Wait 2ms for accelerometer to power up and settle
   //WAIT_10ms();
   Task_sleep(1000);
 
-  calibrate_LSM6DSM();
+ // calibrate_LSM6DSM();
     
-   LSM6DSM_WriteReg(LSM6DSM_CTRL10_C, 0x04);
-   //WAIT_50ms();
-   Task_sleep(5000);
-   configure_LSM_tiltInt();
+
    
 }
 
@@ -312,7 +330,7 @@ void init_Gryo_FIFO(void){
   LSM6DSM_WriteReg(LSM6DSM_FIFO_CTRL1, LSM6DSM_FIFO_THRESHOLD); //12.5 x 3 x 5seconds
   LSM6DSM_WriteReg(LSM6DSM_FIFO_CTRL2, 0);
 
-  //no fifo decimation for Gyro. Acceleration readings will not be stored in Fifo
+  //no fifo decimation for Gyro and acc
   LSM6DSM_WriteReg(LSM6DSM_FIFO_CTRL3, (LSM6DSM_GYRO_FIFO_NO_DEC | LSM6DSM_ACC_FIFO_NO_DEC));
 
   LSM6DSM_WriteReg(LSM6DSM_FIFO_CTRL4, 0x80);
@@ -323,8 +341,13 @@ void init_Gryo_FIFO(void){
   //Block Data Update - output registers not updated until MSB and LSB have been read
   //Auto increment register address
   LSM6DSM_WriteReg(LSM6DSM_CTRL3_C, (0x40 | 0x04));  
-  
+ 
+  //setup FIFO Interrupt on INT1
+  LSM6DSM_WriteReg(LSM6DSM_DRDY_PULSE_CFG, 0x80); //pulse the interrupt
+  LSM6DSM_WriteReg(LSM6DSM_INT2_CTRL,0x08); //Fifo threshold interrupt on Int_1
   //StartMotionCalibration(); //get home gyro position
+  
+ // LSM6DSM_WriteReg(LSM6DSM_TAP_CFG1, 0x80); //enable latched interrupt
 }
 
 void enable_Filtering(void)
@@ -386,7 +409,7 @@ unsigned char read_accelerometer(unsigned char reg, void *dataByte, unsigned cha
   if (!transferOK) 
   {
   }
-  Task_sleep(5000);
+  Task_sleep(90);
   PIN_setOutputValue(pinCSHandle, Board_SPI0_CSN, 1);    //release CS
   
   return receiveBuffer[1];
@@ -802,53 +825,49 @@ float CalcGValue(float myVal){
   */
 }
 
-void LSM6DSM_process_Interrupt(){
-
-  unsigned char tempr = 0;
-  //clear the LSM interrupt by reading WAKE_UP_SRC
-
-  tempr = LSM6DSM_ReadReg(LSM6DSM_WAKE_UP_SRC);
-  tempr &= 0x20;
-  
-    //if it is indeed Free fall interupt WAKE_UP_SRC bit 5
-  if ((tempr >>5) ==1)
-  {
-      //free fall
-    
-  }
-  
-  tempr = 0;
-  tempr = LSM6DSM_ReadReg(LSM6DSM_FUNC_SRC1);
-  
-  if(tempr & BV(6))
-  {
-      //significant motion
-  }
-    
-  //blink the LED 
-
-}
-
-/*
-HAL_ISR_FUNCTION( halKeyPort1Isr, P1INT_VECTOR )
+char ReadGyroData(void)
 {
-  unsigned int m=0;
-  
- // if (P1IFG & BV(7)) 
- // {
- //   LSM6DSM_process_Interrupt();
- // }
-  
+  //char gi = 0;
+  Gyro_DataSetsToRead = LSM6DSM_ReadReg(LSM6DSM_FIFO_STATUS1);
+  Gyro_DataSetsToRead = Gyro_DataSetsToRead/6;
+  for (char gi=0; gi < Gyro_DataSetsToRead; gi++)
+ // while (LSM6DSM_ReadReg(LSM6DSM_FIFO_STATUS1))
+         
+  {
+    if (LSM6DSM_ReadReg(LSM6DSM_FIFO_STATUS3)==0) //Gx
+      Gyro_X[gi] = (LSM6DSM_ReadReg(LSM6DSM_FIFO_DATA_OUT_L) | (LSM6DSM_ReadReg(LSM6DSM_FIFO_DATA_OUT_H) <<8))-Gyro_Offset_X;
+    if (LSM6DSM_ReadReg(LSM6DSM_FIFO_STATUS3)==1)    //Gy
+      Gyro_Y[gi] = (LSM6DSM_ReadReg(LSM6DSM_FIFO_DATA_OUT_L) | (LSM6DSM_ReadReg(LSM6DSM_FIFO_DATA_OUT_H) <<8) ) -Gyro_Offset_Y;
+    if (LSM6DSM_ReadReg(LSM6DSM_FIFO_STATUS3)==2)    //Gz
+      Gyro_Z[gi] = (LSM6DSM_ReadReg(LSM6DSM_FIFO_DATA_OUT_L) | (LSM6DSM_ReadReg(LSM6DSM_FIFO_DATA_OUT_H) <<8) )  -Gyro_Offset_Z;
+    if (LSM6DSM_ReadReg(LSM6DSM_FIFO_STATUS3)==3) //Gx
+      Acc_X[gi] = (LSM6DSM_ReadReg(LSM6DSM_FIFO_DATA_OUT_L) | (LSM6DSM_ReadReg(LSM6DSM_FIFO_DATA_OUT_H) <<8) ); //+200;
+    if (LSM6DSM_ReadReg(LSM6DSM_FIFO_STATUS3)==4)    //Gy
+      Acc_Y[gi] = (LSM6DSM_ReadReg(LSM6DSM_FIFO_DATA_OUT_L) | (LSM6DSM_ReadReg(LSM6DSM_FIFO_DATA_OUT_H) <<8) );// -1000;
+    if (LSM6DSM_ReadReg(LSM6DSM_FIFO_STATUS3)==5)    //Gz
+      Acc_Z[gi] = (LSM6DSM_ReadReg(LSM6DSM_FIFO_DATA_OUT_L) | (LSM6DSM_ReadReg(LSM6DSM_FIFO_DATA_OUT_H) <<8) );
 
-  //blink the LED
+    //here we reject noise
+    //assuming the arm moves 90 degrees in 5 seconds (slowest).
+    //that gives=? 90/5 = 18 dps. if the gyro value of any axis is less than this,
+    //we can just ignore it sicne the gyro is just giving us noisy/bad values
+    //to be on safer side, we will allow values larger than 10 dps.
+    
+    if ((abs(Gyro_X[gi])<300))// || (abs(Gyro_X[gi])>29000))
+      Gyro_X[gi] = 0;
+    if ((abs(Gyro_Y[gi])<300))// || (abs(Gyro_Y[gi])>29000))
+      Gyro_Y[gi] = 0;
+    if ((abs(Gyro_Z[gi])<300)) //|| (abs(Gyro_Z[gi])>29000))
+      Gyro_Z[gi] = 0;
+    /*
+    if ((abs(Acc_X[gi])<300))// || (abs(Acc_X[gi])>20000))
+      Acc_X[gi] = 300;
+    if ((abs(Acc_Y[gi])<300)) //|| (abs(Acc_Y[gi])>20000))
+      Acc_Y[gi] = 300;
+    if ((abs(Acc_Z[gi])<300)) //|| (abs(Acc_Z[gi])>20000))
+      Acc_Z[gi] = 300;
+    */
+  }
   
-    //Clear the CPU interrupt flag for Port_1
-  //  PxIFG has to be cleared before PxIF
-
-  LSM6DSM_ReadReg(LSM6DSM_WAKE_UP_SRC);
-  LSM6DSM_ReadReg(LSM6DSM_FUNC_SRC1);
-   //clear the P1_7 interrupt flag
-   //clear the MCU interrupt flag
+  return Gyro_DataSetsToRead;
 }
-
-*/

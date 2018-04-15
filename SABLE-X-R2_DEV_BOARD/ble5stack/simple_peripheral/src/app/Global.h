@@ -68,6 +68,19 @@ extern unsigned char TX_Data[9];
 
 void Start_Acc1SecClock(void);
 void Start_LEDClock(uint32_t dur);
+
+extern int Gyro_Home_Angle_X; //+-180 
+extern int Gyro_Home_Angle_Y; //+-180
+extern int Gyro_Home_Angle_Z; //+-180
+
+extern char Gyro_DataSetsToRead;
+
+extern int Gyro_X[50];
+extern int Gyro_Y[50];
+extern int Gyro_Z[50];
+extern int Acc_X[50];
+extern int Acc_Y[50];
+extern int Acc_Z[50];
   #ifdef __cplusplus
 }
 #endif
