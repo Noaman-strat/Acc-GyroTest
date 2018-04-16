@@ -14,13 +14,13 @@
     <XdsDriver>
         <xds110serialNo>L1001648</xds110serialNo>
         <xds110foundProbes />
-        <xdsResetStyle>0</xdsResetStyle>
-        <xdsResetStrategy>3</xdsResetStrategy>
         <CStepIntDis>_ 0</CStepIntDis>
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
+        <xdsResetStyle>2</xdsResetStyle>
+        <xdsResetStrategy>3</xdsResetStrategy>
     </XdsDriver>
     <DebugChecksum>
-        <Checksum>1002916073</Checksum>
+        <Checksum>2037703619</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -34,7 +34,7 @@
         <MixedMode>1</MixedMode>
     </Disassembly>
     <CallStack>
-        <ShowArgs>0</ShowArgs>
+        <ShowArgs>1</ShowArgs>
     </CallStack>
     <SWOTraceHWSettings>
         <OverrideDefaultClocks>0</OverrideDefaultClocks>
@@ -54,6 +54,9 @@
         <ITMportsLogFile>0</ITMportsLogFile>
         <ITMlogFile>$PROJ_DIR$\ITM.log</ITMlogFile>
     </SWOTraceHWSettings>
+    <watch_formats>
+        <Fmt0>{W}1:CalibrationCounter	3	0</Fmt0>
+    </watch_formats>
     <Trace2>
         <Enabled>0</Enabled>
         <ShowSource>0</ShowSource>
@@ -120,6 +123,12 @@
         <ShowTimeSum>1</ShowTimeSum>
         <SumSortOrder>0</SumSortOrder>
     </EventLog>
+    <DisassembleMode>
+        <mode>0</mode>
+    </DisassembleMode>
+    <Breakpoints2>
+        <Count>0</Count>
+    </Breakpoints2>
     <LogFile>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
@@ -129,6 +138,21 @@
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
     </TermIOLog>
+    <Aliases>
+        <A0>_ "C:\Jenkins\jobs\FWGroup-DriverLib\workspace\modules\output\cc26xx_ch2_1_0_ext\driverlib\chipinfo.c" ""</A0>
+        <A1>_ "C:\Jenkins\jobs\FWGroup-DriverLib\workspace\modules\output\cc26xx_ch2_1_0_ext\driverlib\chipinfo.h" ""</A1>
+        <A2>_ "C:\Jenkins\jobs\FWGroup-DriverLib\workspace\modules\output\cc26xx_ch2_1_0_ext\driverlib\vims.c" ""</A2>
+        <A3>_ "C:\Users\sdtest\simplelink_development\main_packages\MAIN\repo\source\ti\ble5stack\controller\cc26xx_r2\ll\ble.c" ""</A3>
+        <A4>_ "C:\Users\sdtest\simplelink_development\main_packages\MAIN\repo\source\ti\ble5stack\controller\cc26xx_r2\ll\ll.c" ""</A4>
+        <A5>_ "C:\Users\sdtest\simplelink_development\main_packages\MAIN\repo\source\ti\ble5stack\hci\cc26xx_r2\hci.c" ""</A5>
+        <A6>_ "C:\Users\sdtest\simplelink_development\main_packages\MAIN\repo\source\ti\ble5stack\hci\cc26xx_r2\hci_tl.c" ""</A6>
+        <A7>_ "C:\Users\sdtest\simplelink_development\main_packages\MAIN\repo\source\ti\ble5stack\host\gapgattserver.c" ""</A7>
+        <A8>_ "C:\Users\sdtest\simplelink_development\main_packages\MAIN\repo\source\ti\ble5stack\host\gatt_client.c" ""</A8>
+        <A9>_ "C:\Users\sdtest\simplelink_development\main_packages\MAIN\repo\source\ti\ble5stack\host\sm_mgr.c" ""</A9>
+        <A10>_ "C:\ti\simplelink_cc2640r2_sdk_1_40_00_45\examples\rtos\SABLE-X-R2_DEV_BOARD\ble5stack\simple_peripheral\src\app\UART.c" ""</A10>
+        <Count>11</Count>
+        <SuppressDialog>0</SuppressDialog>
+    </Aliases>
     <DriverProfiling>
         <Enabled>0</Enabled>
         <Mode>3</Mode>
@@ -151,25 +175,4 @@
         <Probe2>Energy</Probe2>
         <ProbeSetup2>4 1 1 10 0 0</ProbeSetup2>
     </PowerProbe>
-    <DisassembleMode>
-        <mode>0</mode>
-    </DisassembleMode>
-    <Breakpoints2>
-        <Count>0</Count>
-    </Breakpoints2>
-    <Aliases>
-        <A0>_ "C:\Jenkins\jobs\FWGroup-DriverLib\workspace\modules\output\cc26xx_ch2_1_0_ext\driverlib\chipinfo.c" ""</A0>
-        <A1>_ "C:\Jenkins\jobs\FWGroup-DriverLib\workspace\modules\output\cc26xx_ch2_1_0_ext\driverlib\chipinfo.h" ""</A1>
-        <A2>_ "C:\Jenkins\jobs\FWGroup-DriverLib\workspace\modules\output\cc26xx_ch2_1_0_ext\driverlib\vims.c" ""</A2>
-        <A3>_ "C:\Users\sdtest\simplelink_development\main_packages\MAIN\repo\source\ti\ble5stack\controller\cc26xx_r2\ll\ble.c" ""</A3>
-        <A4>_ "C:\Users\sdtest\simplelink_development\main_packages\MAIN\repo\source\ti\ble5stack\controller\cc26xx_r2\ll\ll.c" ""</A4>
-        <A5>_ "C:\Users\sdtest\simplelink_development\main_packages\MAIN\repo\source\ti\ble5stack\hci\cc26xx_r2\hci.c" ""</A5>
-        <A6>_ "C:\Users\sdtest\simplelink_development\main_packages\MAIN\repo\source\ti\ble5stack\hci\cc26xx_r2\hci_tl.c" ""</A6>
-        <A7>_ "C:\Users\sdtest\simplelink_development\main_packages\MAIN\repo\source\ti\ble5stack\host\gapgattserver.c" ""</A7>
-        <A8>_ "C:\Users\sdtest\simplelink_development\main_packages\MAIN\repo\source\ti\ble5stack\host\gatt_client.c" ""</A8>
-        <A9>_ "C:\Users\sdtest\simplelink_development\main_packages\MAIN\repo\source\ti\ble5stack\host\sm_mgr.c" ""</A9>
-        <A10>_ "C:\ti\simplelink_cc2640r2_sdk_1_40_00_45\examples\rtos\SABLE-X-R2_DEV_BOARD\ble5stack\simple_peripheral\src\app\UART.c" ""</A10>
-        <Count>11</Count>
-        <SuppressDialog>0</SuppressDialog>
-    </Aliases>
 </settings>

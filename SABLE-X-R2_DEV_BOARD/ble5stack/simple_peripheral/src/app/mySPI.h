@@ -14,6 +14,7 @@ extern "C" {
 #include "PlaneRemote.h"
 #include <./ti/drivers/SPI.h>
 #include "LSM6DSM.h"
+#include "Global.h"
 /*********************************************************************
 *  EXTERNAL VARIABLES
 */
@@ -58,7 +59,7 @@ extern unsigned int ACC_EVENT_PERIOD;
 extern uint8_t CurrentOrientation;
 extern uint8_t PreviousOrientation;
 
-extern AxesRaw_t* Gyro_Home_Position;
+
 
 extern char HomePositionSet;    //home position must be set by holding Button 1 for 5 seconds
 
@@ -87,8 +88,8 @@ extern short CalculatedBeaconAngle;
 #define         GyroSensitivity_125     4.375   
 #define         GyroSensitivity_500     17.5   
 
-#define         GyroDivisor125          18.2857        //0.00047878      //dt / sensitivity = 0.08 / (4.375/1000)
-#define         GyroDivisor500          4.5714       //0.0045714
+#define         GyroDivisor125          .0000182857        //0.00047878      //dt / sensitivity = 0.08 / (4.375*1000)
+#define         GyroDivisor500          .000004571428       //0.0045714
 
 #define         AccDivisor_2g           0.000061        //0.061 / 1000 (mg / 1000 = g)
 #define         AccDivisor_4g           0.000122        //0.122 / 1000        

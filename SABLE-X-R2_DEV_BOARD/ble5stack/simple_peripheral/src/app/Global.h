@@ -28,12 +28,18 @@ extern "C" {
 #define WAIT_100ms()      {for(unsigned long i=0;i<91400;i++)asm("NOP"); }
 #define WAIT_500ms()      {for(unsigned long i=0;i<457142;i++)asm("NOP"); }
    
-   typedef struct 
+typedef struct 
 {
-  signed short AXIS_X;
-  signed short AXIS_Y;
-  signed short AXIS_Z;
+  double AXIS_X;
+  double AXIS_Y;
+  double AXIS_Z;
 } AxesRaw_t;
+
+//extern AxesRaw_t *Gyro_Home_Position;
+
+extern signed short Gyro_Home_Position_X;
+extern signed short Gyro_Home_Position_Y;
+extern signed short Gyro_Home_Position_Z;
   
   #define BothLEDsOff     0
 #define GreenLED        1
@@ -75,12 +81,12 @@ extern int Gyro_Home_Angle_Z; //+-180
 
 extern char Gyro_DataSetsToRead;
 
-extern int Gyro_X[50];
-extern int Gyro_Y[50];
-extern int Gyro_Z[50];
-extern int Acc_X[50];
-extern int Acc_Y[50];
-extern int Acc_Z[50];
+extern signed short Gyro_X[20];
+extern signed short Gyro_Y[20];
+extern signed short Gyro_Z[20];
+extern signed short Acc_X[20];
+extern signed short Acc_Y[20];
+extern signed short Acc_Z[20];
   #ifdef __cplusplus
 }
 #endif

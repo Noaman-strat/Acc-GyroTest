@@ -64,7 +64,9 @@ With the BRD values available, the UART configuration is written to the module i
 *  EXTERNAL VARIABLES
 */
 
+extern char tempchar1, tempchar2, tempchar3;
  extern UART_Handle DebugUart;
+
 /*********************************************************************
  * CONSTANTS
  */
@@ -92,6 +94,7 @@ With the BRD values available, the UART configuration is written to the module i
  *
  * @return  none
  */
+ char myUart_covertChar(char numtoConvert, char ind);
 bool myUART_Config(void);
 void myUART_send(char ds);
 /*********************************************************************

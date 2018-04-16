@@ -859,11 +859,12 @@ char ReadGyroData(void)
       Gyro_Y[gi] = 0;
     if ((abs(Gyro_Z[gi])<300)) //|| (abs(Gyro_Z[gi])>29000))
       Gyro_Z[gi] = 0;
+    
+    if ((abs(Acc_X[gi])<350))// || (abs(Acc_X[gi])>20000))
+      Acc_X[gi] = 0;
+    if ((abs(Acc_Y[gi])<350)) //|| (abs(Acc_Y[gi])>20000))
+      Acc_Y[gi] = 0;
     /*
-    if ((abs(Acc_X[gi])<300))// || (abs(Acc_X[gi])>20000))
-      Acc_X[gi] = 300;
-    if ((abs(Acc_Y[gi])<300)) //|| (abs(Acc_Y[gi])>20000))
-      Acc_Y[gi] = 300;
     if ((abs(Acc_Z[gi])<300)) //|| (abs(Acc_Z[gi])>20000))
       Acc_Z[gi] = 300;
     */

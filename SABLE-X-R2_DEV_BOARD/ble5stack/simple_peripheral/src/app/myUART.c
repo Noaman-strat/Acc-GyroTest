@@ -4,6 +4,7 @@
 #include <hw_memmap.h>
 #include "hw_types.h"
 #include <hw_prcm.h>
+
 //#include <stdbool.h>
 //#include <ti/sysbios/knl/Clock.h>
 //#include <ti/sysbios/family/arm/m3/Hwi.h>
@@ -12,7 +13,10 @@
 //#include <ti/drivers/pin/PINCC26XX.h>
 
 #include "board.h"
-unsigned char TX_Data[9] = {45, 0, ',', 0, ',', 0,0x0D, 0x0A};
+
+char tempchar1, tempchar2, tempchar3;
+
+unsigned char TX_Data[16] = {0,0,0,0,',',0,0,0,0,',',0,0,0,0,0x0D, 0x0A};
   UART_Handle DebugUart = 0;
 bool myUART_Config(void)
 {
@@ -56,4 +60,16 @@ bool myUART_Config(void)
 void myUART_send(char ds)
 {
 
+}
+
+char myUart_covertChar(char numtoConvert, char ind)
+{
+  tempchar1 = (numtoConvert/100);
+  tempchar2 =  ((numtoConvert - (tempchar1 * 100))/10);    //
+  tempchar3 = ((numtoConvert - ((tempchar1 * 100) + (tempchar2 * 10))));
+  tempchar1 +=48;
+  tempchar2 +=48;
+  tempchar3 +=48;
+  
+return 1;
 }

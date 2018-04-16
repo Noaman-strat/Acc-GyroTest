@@ -238,6 +238,8 @@ typedef struct
 // Display Interface
 Display_Handle dispHandle = NULL;
 
+AxesRaw_t *Gyro_Home_Position;
+
 /*********************************************************************
  * LOCAL VARIABLES
  */
@@ -524,7 +526,7 @@ static void SimpleBLEPeripheral_init(void)
   
   //Accelerometer clock, start right away
   Util_constructClock(&Acc1SecClock, SimpleBLEPeripheral_clockHandler,
-                    SPB_ACC_1SEC_EVT_PERIOD, 500, true, SPB_ACC_1SEC_EVT);
+                    SPB_ACC_1SEC_EVT_PERIOD, 0, false, SPB_ACC_1SEC_EVT);
   Util_constructClock(&AccResponseClock, SimpleBLEPeripheral_clockHandler,
                     SBP_ACC_EVT_PERIOD, 0, false, SBP_ACC_EVT); 
   Util_constructClock(&LEDEventClock, SimpleBLEPeripheral_clockHandler,
@@ -857,7 +859,7 @@ static void SimpleBLEPeripheral_taskFxn(UArg a0, UArg a1)
 
           //when Calibration Counter ==3, that means we just finished getting the home position
           //we should first determine our orientation to see how the device is mounted
-          if (CalibrationCounter==10)
+          if (CalibrationCounter==11)
           {
             GetHomePositionOrientation();
             CalibrationCounter++;
@@ -865,14 +867,34 @@ static void SimpleBLEPeripheral_taskFxn(UArg a0, UArg a1)
           else
           {
             Check_for_Quadrant_Change();
+            
+            if (AngleX1 <0)
+              TX_Data[0] = '-';
+            myUart_covertChar((char) AngleX1,0);
+            TX_Data[1] = tempchar1; TX_Data[2] = tempchar2; TX_Data[3] = tempchar3;
+
+            if (AngleY1 <0)
+              TX_Data[5] = '-';
+            myUart_covertChar((char) AngleY1,0);
+            TX_Data[6] = tempchar1; TX_Data[7] = tempchar2; TX_Data[8] = tempchar3;
+
+            if (AngleZ1 <0)
+              TX_Data[10] = '-';
+            myUart_covertChar((char) AngleZ1,0);
+            TX_Data[11] = tempchar1; TX_Data[12] = tempchar2; TX_Data[13] = tempchar3;
+
+
+        UART_write(DebugUart, &TX_Data, 16);
           }
-          Util_startClock(&Acc1SecClock);
+          ChangeLED(GreenLED, DurationShort);
         }
-        
+        Util_startClock(&Acc1SecClock);
       }
       
       if (events & SBP_ACC_EVT)
       {
+        if (HomePositionSet)
+          ChangeLED(GreenLED, DurationShort);
       }
       
       if (events & SBP_LED_EVT)

@@ -14,7 +14,7 @@
 #include <ti/sysbios/BIOS.h>
 #include <ti/sysbios/knl/Task.h>
 //#include "LSM6DSM.h"
-#include "Global.h"
+
 #include "myUART.h"
 #include "util.h"
 #include "UI.h"
@@ -22,7 +22,7 @@
 
 #include "board.h"
 
-#define SPIACC_TASK_STACK_SIZE     1000
+#define SPIACC_TASK_STACK_SIZE     2000
 #define SPIACC_TASK_PRIORITY       2
 uint8_t spiACCTaskStack[SPIACC_TASK_STACK_SIZE];
 
@@ -38,16 +38,16 @@ bool            transferOK = 0;
 double UpperTiltThreshold = 0.0;
 double LowerTiltThreshold = 0.0;
 
-bool Gyro_Started = false;
+bool Gyro_Started = true;
 bool FirstTimeRun = true;
 char Gyro_DataSetsToRead = 0;
 
-int Gyro_X[50] = {0};
-int Gyro_Y[50] = {0};
-int Gyro_Z[50] = {0};
-int Acc_X[50] = {0};
-int Acc_Y[50] = {0};
-int Acc_Z[50] = {0};
+signed short Gyro_X[20] = {0};
+signed short Gyro_Y[20] = {0};
+signed short Gyro_Z[20] = {0};
+signed short Acc_X[20] = {0};
+signed short Acc_Y[20] = {0};
+signed short Acc_Z[20] = {0};
 
 //float Angle_X[50] = {0};
 //float Angle_Y[50] = {0};
@@ -73,7 +73,7 @@ bool Motion_Calibration_Running = false;
 uint8 CurrentOrientation =0;
 uint8 PreviousOrientation =0;
 
-AxesRaw_t* Gyro_Home_Position;
+
 
 short CalculatedBeaconAngle = 0;
 
@@ -89,10 +89,17 @@ char IAmCalled = 0;
 char RegInt = 0;
 
 uint32_t standbyDurationMs = 100;
+
+ signed short Gyro_Home_Position_X;
+ signed short Gyro_Home_Position_Y;
+ signed short Gyro_Home_Position_Z;
   
 PIN_State pinCSState;
 PIN_Handle pinCSHandle;
   
+
+
+
 
 
 // Debounce timeout in milliseconds
@@ -165,7 +172,52 @@ static void spiThread(UArg s_arg0, UArg s_arg1)
     while(1)
     {
       //Wait for time LARGER than ACC ODR
-      Task_sleep(standbyDurationMs*10);   
+      Task_sleep(standbyDurationMs*100);  
+      
+      if ((CalibrationCounter >=10 ) && (!HomePositionSet))
+      {
+        //LSM6DSM_WriteReg(LSM6DSM_INT1_CTRL,0x00); //Clear FIFO Int.
+        
+       
+        //set the home position
+        Gyro_Home_Position_X = AngleX1;
+       Gyro_Home_Position_Y = AngleY1;
+       Gyro_Home_Position_Z = AngleZ1;
+
+        //GetHomePositionOrientation();
+        
+        //start the ACC timer for regular operation
+        Start_Acc1SecClock();
+
+        ChangeLED(GreenLED, Duration2sec);
+            //set the flags
+        HomePositionSet = true;
+        Motion_Calibration_Running = false;
+        
+      }
+      /*
+      if (HomePositionSet)
+      {
+        
+        if (AngleX1 <0)
+          TX_Data[0] = '-';
+        myUart_covertChar((char) AngleX1,0);
+        TX_Data[1] = tempchar1; TX_Data[2] = tempchar2; TX_Data[3] = tempchar3;
+        
+        if (AngleY1 <0)
+          TX_Data[5] = '-';
+        myUart_covertChar((char) AngleY1,0);
+        TX_Data[6] = tempchar1; TX_Data[7] = tempchar2; TX_Data[8] = tempchar3;
+        
+        if (AngleZ1 <0)
+          TX_Data[10] = '-';
+        myUart_covertChar((char) AngleZ1,0);
+        TX_Data[11] = tempchar1; TX_Data[12] = tempchar2; TX_Data[13] = tempchar3;
+        
+
+        UART_write(DebugUart, &TX_Data, 16);
+      }
+*/
       /*
       Gyro_FIFOStatus = LSM6DSM_ReadReg(LSM6DSM_FIFO_STATUS2);
       if (Gyro_FIFOStatus> 72)
@@ -323,40 +375,11 @@ void Process_Int(void)
     Gyro_Offset_X = Gyro_X[5];
     Gyro_Offset_Y = Gyro_Y[5];
     Gyro_Offset_Z = Gyro_Z[5];
-    CalibrationCounter++;
-  }
 
-  else if (CalibrationCounter <10)
-  {
-    CalibrationCounter++;
-    //AngleX1 = 0;
-    //AngleY1 = 0;
-   // AngleZ1 = 0;
   }
-  else if (CalibrationCounter ==10)
-  {
-    //LSM6DSM_WriteReg(LSM6DSM_INT1_CTRL,0x00); //Clear FIFO Int.
-    
-   
-    //set the home position
-    Gyro_Home_Position->AXIS_X = AngleX1;
-    Gyro_Home_Position->AXIS_Y = AngleY1;
-    Gyro_Home_Position->AXIS_Z = AngleZ1;
-    
-    //set the flags
-    HomePositionSet = true;
-    Motion_Calibration_Running = false;
-       
-    GetHomePositionOrientation();
+  
+  
     CalibrationCounter++;
-    
-    //start the ACC timer for regular operation
-    Start_Acc1SecClock();
-
-    ChangeLED(GreenLED, Duration2sec);
-    
-  }
-    
 }
 //This routine performs motion callibration to:
 //1- reset flags
@@ -400,9 +423,9 @@ void StartMotionCalibration(void)
 //other Axes can be ignored
 void GetHomePositionOrientation(void)
 {
-  int Avrg_gX = 0.0;
-  int Avrg_gY = 0.0;
-  int Avrg_gZ = 0.0; 
+  int Avrg_gX = 0;
+  int Avrg_gY = 0;
+  int Avrg_gZ = 0; 
   
   /*
   //use the most recent Acc_X, Acc_y and Acc_Z values 
@@ -485,9 +508,9 @@ void CalculateAngle(char datasets)
     for (char gi=0; gi < datasets; gi++)      
     {     
       //Gyro Angle Calculation
-      AngleX1 += ((double)Gyro_X[gi] * GyroDivisor500);
-      AngleY1 -= ((double)Gyro_Y[gi] * GyroDivisor500); //-negative sign works
-      AngleZ1 += ((double)Gyro_Z[gi] * GyroDivisor500);
+      AngleX1 += ((double)Gyro_X[gi] * GyroDivisor125);
+      AngleY1 -= ((double)Gyro_Y[gi] * GyroDivisor125); //-negative sign works
+      AngleZ1 += ((double)Gyro_Z[gi] * GyroDivisor125);
       
       //Acc Angle Calculation
       //if Acc change is between 0.2 (3276) and 1.4g (19660) only then do the calculation.
@@ -518,8 +541,8 @@ void CalculateAngle(char datasets)
       {
       case    Orientation_X:
         
-        diffAngleX = abs(abs(AngleX1) - abs(Gyro_Home_Position->AXIS_X));
-        diffAngleY = abs(abs(AngleY1) - abs(Gyro_Home_Position->AXIS_Y));
+        diffAngleX = abs(abs(AngleX1) - abs(Gyro_Home_Position_X));
+        diffAngleY = abs(abs(AngleY1) - abs(Gyro_Home_Position_Y));
         if (diffAngleX< 20)
         {
           EventRecord = false;
@@ -572,7 +595,7 @@ void CalculateAngle(char datasets)
         
       case Orientation_Z:    
         
-        diffAngleZ = abs(abs(AngleZ1) - abs(Gyro_Home_Position->AXIS_Z));
+        diffAngleZ = abs(abs(AngleZ1) - abs(Gyro_Home_Position_Z));
         if (diffAngleZ< 20)
         {
           EventRecord = false;
